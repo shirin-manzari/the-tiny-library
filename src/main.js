@@ -57,7 +57,10 @@ shelf.style.setProperty('--shelf-width', `${Math.min(1150, Math.max(520, books.l
 const row = document.createElement('div')
 row.className = 'books-row'
 row.tabIndex = 0
-row.setAttribute('aria-label', 'Bookshelf; drag, scroll, or use the left and right arrow keys to browse')
+row.setAttribute('aria-label', 'Looping bookshelf; drag, scroll, or use the left and right arrow keys to browse')
+
+const bookCycle = document.createElement('div')
+bookCycle.className = 'book-cycle'
 
 books.forEach((book, index) => {
   const spine = document.createElement('div')
@@ -83,9 +86,10 @@ books.forEach((book, index) => {
     span('book-author', book.author),
     span('book-mark', '✳'),
   )
-  row.append(spine)
+  bookCycle.append(spine)
 })
 
+row.append(bookCycle)
 const woodShelf = document.createElement('div')
 woodShelf.className = 'wood-shelf'
 woodShelf.append(span('wood-line'), span('wood-line second'))
@@ -93,9 +97,59 @@ shelf.append(row, woodShelf)
 root.replaceChildren(shelf)
 
 let drag = null
+let cycleWidth = 0
+let sideCopies = 0
+
+function cloneCycle() {
+  const clone = bookCycle.cloneNode(true)
+  clone.setAttribute('aria-hidden', 'true')
+  return clone
+}
+
+function centerLoop() {
+  if (!cycleWidth) return
+  const offset = row.scrollLeft - sideCopies * cycleWidth
+  if (Math.abs(offset) <= cycleWidth / 2) return
+
+  const shift = -Math.round(offset / cycleWidth) * cycleWidth
+  row.scrollLeft += shift
+  if (drag) drag.scrollLeft += shift
+}
+
+function layoutLoop() {
+  const relativePosition = cycleWidth ? (row.scrollLeft - sideCopies * cycleWidth) / cycleWidth : 0
+  const nextWidth = bookCycle.getBoundingClientRect().width
+  if (!nextWidth) return
+
+  const nextSideCopies = Math.max(1, Math.ceil(row.clientWidth / nextWidth))
+  if (nextSideCopies !== sideCopies) {
+    const fragment = document.createDocumentFragment()
+    for (let i = 0; i < nextSideCopies; i++) fragment.append(cloneCycle())
+    fragment.append(bookCycle)
+    for (let i = 0; i < nextSideCopies; i++) fragment.append(cloneCycle())
+    row.replaceChildren(fragment)
+  }
+
+  cycleWidth = nextWidth
+  sideCopies = nextSideCopies
+  row.scrollLeft = (sideCopies + relativePosition) * cycleWidth
+  centerLoop()
+}
+
+layoutLoop()
+window.addEventListener('resize', layoutLoop)
+row.addEventListener('scroll', centerLoop, { passive: true })
+
+let keyAnimation = null
+
+function stopKeyAnimation() {
+  if (keyAnimation !== null) cancelAnimationFrame(keyAnimation)
+  keyAnimation = null
+}
 
 row.addEventListener('pointerdown', (event) => {
   if (event.pointerType === 'touch' || event.button !== 0 || row.scrollWidth <= row.clientWidth) return
+  stopKeyAnimation()
   drag = { pointerId: event.pointerId, x: event.clientX, scrollLeft: row.scrollLeft }
   row.setPointerCapture(event.pointerId)
   row.classList.add('is-dragging')
@@ -104,6 +158,7 @@ row.addEventListener('pointerdown', (event) => {
 row.addEventListener('pointermove', (event) => {
   if (!drag || event.pointerId !== drag.pointerId) return
   row.scrollLeft = drag.scrollLeft - (event.clientX - drag.x)
+  centerLoop()
 })
 
 function endDrag(event) {
@@ -118,22 +173,39 @@ row.addEventListener('pointercancel', endDrag)
 
 row.addEventListener('wheel', (event) => {
   if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return
-  const maxScroll = row.scrollWidth - row.clientWidth
-  if (maxScroll <= 0) return
+  if (!cycleWidth) return
 
+  stopKeyAnimation()
   const multiplier = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? row.clientWidth : 1
-  const nextScroll = Math.max(0, Math.min(maxScroll, row.scrollLeft + event.deltaY * multiplier))
-  if (nextScroll === row.scrollLeft) return
   event.preventDefault()
-  row.scrollLeft = nextScroll
+  row.scrollLeft += event.deltaY * multiplier
+  centerLoop()
 }, { passive: false })
+
+function moveShelf(distance) {
+  stopKeyAnimation()
+  let startedAt = null
+  let previousProgress = 0
+
+  function frame(now) {
+    if (startedAt === null) startedAt = now
+    const progress = Math.min(1, (now - startedAt) / 300)
+    const eased = 1 - (1 - progress) ** 3
+    row.scrollLeft += distance * (eased - previousProgress)
+    centerLoop()
+    previousProgress = eased
+    keyAnimation = progress < 1 ? requestAnimationFrame(frame) : null
+  }
+
+  keyAnimation = requestAnimationFrame(frame)
+}
 
 window.addEventListener('keydown', (event) => {
   if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return
   if (event.altKey || event.ctrlKey || event.metaKey) return
   if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable]')) return
-  if (row.scrollWidth <= row.clientWidth) return
+  if (!cycleWidth) return
 
   event.preventDefault()
-  row.scrollBy({ left: event.key === 'ArrowRight' ? 320 : -320, behavior: 'smooth' })
+  moveShelf(event.key === 'ArrowRight' ? 320 : -320)
 })
