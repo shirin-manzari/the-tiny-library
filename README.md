@@ -1,6 +1,6 @@
 # The Tiny Library
 
-A small, single-page bookshelf written in vanilla JavaScript and CSS. It shows sample books by default and uses any previously saved book collection from the browser.
+A small, single-page bookshelf written in vanilla JavaScript and CSS. It shows sample books by default and uses any previously saved book collection from the browser. (I will add goodreads soon)
 
 ## Development
 
@@ -15,5 +15,3 @@ npm run dev
 npm run build
 npm run check
 ```
-
-Vite is used only for local development and production builds; the page itself has no framework dependencies.
