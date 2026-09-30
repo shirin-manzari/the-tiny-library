@@ -21,6 +21,11 @@ const starterBooks = [
   { title: 'A Room of One’s Own', author: 'Virginia Woolf', color: '#77739b', accent: '#e3d6b2', height: 180 },
   { title: 'Invisible Cities', author: 'Italo Calvino', color: '#b45e59', accent: '#f0cfa5', height: 197 },
   { title: 'The Bell Jar', author: 'Sylvia Plath', color: '#597c80', accent: '#e6d6af', height: 185 },
+  { title: 'بوف کور', author: 'صادق هدایت', color: '#493f53', accent: '#dfc3a0', height: 196, lang: 'fa' },
+  { title: 'سووشون', author: 'سیمین دانشور', color: '#855c4b', accent: '#f2d5a3', height: 186, lang: 'fa' },
+  { title: 'کلیدر', author: 'محمود دولت‌آبادی', color: '#59694b', accent: '#e9d7a4', height: 208, lang: 'fa' },
+  { title: 'چشم‌هایش', author: 'بزرگ علوی', color: '#315e68', accent: '#f0d4aa', height: 178, lang: 'fa' },
+  { title: 'سمفونی مردگان', author: 'عباس معروفی', color: '#763d4a', accent: '#e9c8a4', height: 214, lang: 'fa' },
 ]
 
 function loadBooks() {
@@ -70,8 +75,13 @@ books.forEach((book, index) => {
   else if (index % 9 === 4) classes.push('vintage-crest')
   if (index % 10 === 3) classes.push('lean-right')
   if (index % 10 === 7) classes.push('lean-left')
+  if (book.lang === 'fa') classes.push('farsi-book')
   spine.className = classes.join(' ')
-  spine.setAttribute('aria-label', `${book.title} by ${book.author}`)
+  spine.setAttribute('aria-label', book.lang === 'fa' ? `${book.title}، اثر ${book.author}` : `${book.title} by ${book.author}`)
+  if (book.lang === 'fa') {
+    spine.lang = 'fa'
+    spine.dir = 'rtl'
+  }
   spine.style.setProperty('--book', book.color)
   spine.style.setProperty('--accent', book.accent)
   spine.style.setProperty('--height', `${book.height}px`)
