@@ -45,8 +45,8 @@ books.forEach((book, index) => {
   const spine = document.createElement('div')
   const classes = ['book']
   if (index % 6 === 0) classes.push('vintage-bands')
-  if (index % 7 === 2) classes.push('vintage-frame')
-  if (index % 9 === 4) classes.push('vintage-crest')
+  else if (index % 7 === 2) classes.push('vintage-frame')
+  else if (index % 9 === 4) classes.push('vintage-crest')
   if (index % 10 === 3) classes.push('lean-right')
   if (index % 10 === 7) classes.push('lean-left')
   spine.className = classes.join(' ')
