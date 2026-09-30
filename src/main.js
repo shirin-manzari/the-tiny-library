@@ -104,7 +104,15 @@ const woodShelf = document.createElement('div')
 woodShelf.className = 'wood-shelf'
 woodShelf.append(span('wood-line'), span('wood-line second'))
 shelf.append(row, woodShelf)
-root.replaceChildren(shelf)
+
+const preview = document.createElement('figure')
+preview.className = 'project-preview'
+const previewImage = document.createElement('img')
+previewImage.src = new URL('../assets/bookshelf-preview.png', import.meta.url).href
+previewImage.alt = 'The Tiny Library bookshelf with colorful book spines on a wooden shelf'
+previewImage.loading = 'lazy'
+preview.append(previewImage)
+root.replaceChildren(shelf, preview)
 
 let drag = null
 let cycleWidth = 0
