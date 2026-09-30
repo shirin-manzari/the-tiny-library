@@ -9,13 +9,29 @@ const starterBooks = [
   { title: 'How to Do Nothing', author: 'Jenny Odell', color: '#71875c', accent: '#e8d5a2', height: 182 },
   { title: 'Piranesi', author: 'Susanna Clarke', color: '#568292', accent: '#f0d18e', height: 195 },
   { title: 'Ways of Seeing', author: 'John Berger', color: '#c17a48', accent: '#f5e3b9', height: 169 },
+  { title: 'The Hobbit', author: 'J. R. R. Tolkien', color: '#405f48', accent: '#dbc88c', height: 201 },
+  { title: 'Jane Eyre', author: 'Charlotte Bronte', color: '#9c4f42', accent: '#edcf9a', height: 183 },
+  { title: 'Dune', author: 'Frank Herbert', color: '#b4834e', accent: '#f5dfb5', height: 208 },
+  { title: 'The Secret Garden', author: 'Frances Hodgson Burnett', color: '#668169', accent: '#e8d7aa', height: 174 },
+  { title: 'Beloved', author: 'Toni Morrison', color: '#6e5267', accent: '#e6c5a7', height: 194 },
+  { title: 'Frankenstein', author: 'Mary Shelley', color: '#4c6872', accent: '#d7cba8', height: 187 },
+  { title: 'The Night Circus', author: 'Erin Morgenstern', color: '#343f50', accent: '#e8d7c2', height: 203 },
+  { title: 'Normal People', author: 'Sally Rooney', color: '#7d8c6f', accent: '#f1e2bf', height: 177 },
+  { title: 'The Alchemist', author: 'Paulo Coelho', color: '#ac6949', accent: '#f2c980', height: 190 },
+  { title: 'A Room of One’s Own', author: 'Virginia Woolf', color: '#77739b', accent: '#e3d6b2', height: 180 },
+  { title: 'Invisible Cities', author: 'Italo Calvino', color: '#b45e59', accent: '#f0cfa5', height: 197 },
+  { title: 'The Bell Jar', author: 'Sylvia Plath', color: '#597c80', accent: '#e6d6af', height: 185 },
 ]
 
 function loadBooks() {
   try {
     const saved = localStorage.getItem('tiny-library-goodreads-books')
     const parsed = saved ? JSON.parse(saved) : null
-    return Array.isArray(parsed) ? parsed : starterBooks
+    if (!Array.isArray(parsed)) return starterBooks
+
+    const savedTitles = new Set(parsed.map((book) => book?.title?.toLowerCase()))
+    const newBooks = starterBooks.slice(10).filter((book) => !savedTitles.has(book.title.toLowerCase()))
+    return [...parsed, ...newBooks]
   } catch {
     return starterBooks
   }
