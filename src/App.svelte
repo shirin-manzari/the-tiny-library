@@ -27,8 +27,9 @@
 <main class="shelf-display" aria-label="Books on a bookshelf">
   <div class="books-row">
     {#each books as book, index (book.title)}
-      <div class="book" style={`--book:${book.color};--accent:${book.accent};--height:${book.height}px;--tilt:${index % 4 === 0 ? '-1.2deg' : index % 4 === 1 ? '.8deg' : '0deg'}`} aria-label={`${book.title} by ${book.author}`}>
+      <div class="book" class:vintage-bands={index % 6 === 0} class:vintage-frame={index % 7 === 2} class:vintage-crest={index % 9 === 4} style={`--book:${book.color};--accent:${book.accent};--height:${book.height}px;--tilt:${index % 4 === 0 ? '-1.2deg' : index % 4 === 1 ? '.8deg' : '0deg'}`} aria-label={`${book.title} by ${book.author}`}>
         <span class="book-cap"></span>
+        <span class="book-ornament" aria-hidden="true"></span>
         <span class="book-title">{book.title}</span>
         <span class="book-rule"></span>
         <span class="book-author">{book.author}</span>
