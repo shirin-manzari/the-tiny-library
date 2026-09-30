@@ -5,9 +5,6 @@ node_modules/
 dist/
 .svelte-kit/
 
-# Future test workspace
-tests/
-
 # Local environment files
 .env
 .env.*

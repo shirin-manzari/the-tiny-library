@@ -1,19 +1,17 @@
 # The Tiny Library
 
-The Tiny Library is an interactive visual bookshelf for a personal weblog, designed to organize Goodreads-imported books into shelves such as Favorites, Technical, and Currently Reading within a future cozy pixel-art library.
-
-## Tech stack
-
-Svelte, TypeScript, Vite, CSS, and static JSON/YAML data.
+A small, single-page bookshelf.
 
 ## Development
 
 ```sh
+npm install
 npm run dev
 ```
 
-## Build
+## Build and checks
 
 ```sh
 npm run build
+npm run check
 ```
