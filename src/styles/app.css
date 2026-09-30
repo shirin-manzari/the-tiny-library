@@ -30,6 +30,7 @@
 .book-title,.book-rule,.book-author,.book-mark{z-index:2}
 .book-cap{z-index:3}
 .vintage-bands,.vintage-frame,.vintage-crest{padding-top:34px;padding-bottom:34px}
+.vintage-bands .book-author,.vintage-frame .book-author,.vintage-crest .book-author{margin-bottom:6px}
 .vintage-bands .book-mark,.vintage-frame .book-mark,.vintage-crest .book-mark{display:none}
 .vintage-bands .book-ornament{background:linear-gradient(to bottom,transparent 0 10px,var(--accent) 10px 12px,transparent 12px 17px,var(--accent) 17px 19px,transparent 19px calc(100% - 19px),var(--accent) calc(100% - 19px) calc(100% - 17px),transparent calc(100% - 17px) calc(100% - 12px),var(--accent) calc(100% - 12px) calc(100% - 10px),transparent calc(100% - 10px))}
 .vintage-bands .book-ornament:before{content:"";position:absolute;inset:23% 6px 23%;border-left:1px solid color-mix(in srgb,var(--accent),transparent 45%);border-right:1px solid color-mix(in srgb,var(--accent),transparent 45%)}
@@ -37,8 +38,7 @@
 .vintage-frame .book-ornament:before,.vintage-frame .book-ornament:after{content:"✧";position:absolute;left:50%;transform:translateX(-50%);font:14px Georgia,serif;color:var(--accent);text-shadow:0 1px 1px #0006}
 .vintage-frame .book-ornament:before{top:4px}.vintage-frame .book-ornament:after{bottom:4px}
 .vintage-crest .book-ornament{background:linear-gradient(to bottom,transparent 0 9px,var(--accent) 9px 11px,transparent 11px 16px,var(--accent) 16px 18px,transparent 18px calc(100% - 18px),var(--accent) calc(100% - 18px) calc(100% - 16px),transparent calc(100% - 16px) calc(100% - 11px),var(--accent) calc(100% - 11px) calc(100% - 9px),transparent calc(100% - 9px))}
-.vintage-crest .book-ornament:before{content:"";position:absolute;left:50%;bottom:24px;width:6px;height:6px;border:1px solid var(--accent);transform:translateX(-50%) rotate(45deg)}
-.vintage-crest .book-ornament:after{content:"";position:absolute;left:50%;bottom:26px;width:2px;height:2px;border-radius:50%;background:var(--accent);transform:translateX(-50%)}
+.vintage-crest .book-ornament:before{content:"";position:absolute;left:50%;bottom:24px;width:6px;height:6px;border:1px solid var(--accent);background:radial-gradient(circle at center,var(--accent) 0 1px,transparent 1px);transform:translateX(-50%) rotate(45deg)}
 .book{--lean:0deg;transform-origin:50% 100%;transform:rotate(var(--lean))}
 .book.lean-right{--lean:5.5deg;margin-right:24px;z-index:1}
 .book.lean-left{--lean:-6.5deg;margin-left:27px;z-index:1}
