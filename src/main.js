@@ -56,6 +56,8 @@ shelf.style.setProperty('--shelf-width', `${Math.min(1150, Math.max(520, books.l
 
 const row = document.createElement('div')
 row.className = 'books-row'
+row.tabIndex = 0
+row.setAttribute('aria-label', 'Bookshelf; drag, scroll, or use the left and right arrow keys to browse')
 
 books.forEach((book, index) => {
   const spine = document.createElement('div')
@@ -89,3 +91,49 @@ woodShelf.className = 'wood-shelf'
 woodShelf.append(span('wood-line'), span('wood-line second'))
 shelf.append(row, woodShelf)
 root.replaceChildren(shelf)
+
+let drag = null
+
+row.addEventListener('pointerdown', (event) => {
+  if (event.pointerType === 'touch' || event.button !== 0 || row.scrollWidth <= row.clientWidth) return
+  drag = { pointerId: event.pointerId, x: event.clientX, scrollLeft: row.scrollLeft }
+  row.setPointerCapture(event.pointerId)
+  row.classList.add('is-dragging')
+})
+
+row.addEventListener('pointermove', (event) => {
+  if (!drag || event.pointerId !== drag.pointerId) return
+  row.scrollLeft = drag.scrollLeft - (event.clientX - drag.x)
+})
+
+function endDrag(event) {
+  if (!drag || event.pointerId !== drag.pointerId) return
+  if (row.hasPointerCapture(event.pointerId)) row.releasePointerCapture(event.pointerId)
+  row.classList.remove('is-dragging')
+  drag = null
+}
+
+row.addEventListener('pointerup', endDrag)
+row.addEventListener('pointercancel', endDrag)
+
+row.addEventListener('wheel', (event) => {
+  if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return
+  const maxScroll = row.scrollWidth - row.clientWidth
+  if (maxScroll <= 0) return
+
+  const multiplier = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? row.clientWidth : 1
+  const nextScroll = Math.max(0, Math.min(maxScroll, row.scrollLeft + event.deltaY * multiplier))
+  if (nextScroll === row.scrollLeft) return
+  event.preventDefault()
+  row.scrollLeft = nextScroll
+}, { passive: false })
+
+window.addEventListener('keydown', (event) => {
+  if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return
+  if (event.altKey || event.ctrlKey || event.metaKey) return
+  if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable]')) return
+  if (row.scrollWidth <= row.clientWidth) return
+
+  event.preventDefault()
+  row.scrollBy({ left: event.key === 'ArrowRight' ? 320 : -320, behavior: 'smooth' })
+})
