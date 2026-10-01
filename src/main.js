@@ -67,14 +67,31 @@ row.setAttribute('aria-label', 'Looping bookshelf; drag, scroll, or use the left
 const bookCycle = document.createElement('div')
 bookCycle.className = 'book-cycle'
 
+function createPlant() {
+  const plant = document.createElement('div')
+  plant.className = 'shelf-plant'
+  plant.setAttribute('aria-hidden', 'true')
+
+  const cactus = document.createElement('div')
+  cactus.className = 'plant-cactus'
+  cactus.append(span('cactus-body'))
+
+  const pot = document.createElement('div')
+  pot.className = 'plant-pot'
+  pot.append(span('plant-soil'), span('plant-rim'), span('plant-pot-body'))
+  plant.append(cactus, pot)
+  return plant
+}
+
 books.forEach((book, index) => {
   const spine = document.createElement('div')
   const classes = ['book']
   if (index % 6 === 0) classes.push('vintage-bands')
   else if (index % 7 === 2) classes.push('vintage-frame')
   else if (index % 9 === 4) classes.push('vintage-crest')
-  if (index % 10 === 3) classes.push('lean-right')
-  if (index % 10 === 7) classes.push('lean-left')
+  if (book.title !== 'A Philosophy of Software Design' && index % 10 === 3) classes.push('lean-right')
+  if (book.title !== 'A Philosophy of Software Design' && index % 10 === 7) classes.push('lean-left')
+  if (index === 5) classes.push('plant-neighbor')
   if (book.lang === 'fa') classes.push('farsi-book')
   spine.className = classes.join(' ')
   spine.setAttribute('aria-label', book.lang === 'fa' ? `${book.title}، اثر ${book.author}` : `${book.title} by ${book.author}`)
@@ -97,6 +114,7 @@ books.forEach((book, index) => {
     span('book-mark', '✳'),
   )
   bookCycle.append(spine)
+  if (index === 5) bookCycle.append(createPlant())
 })
 
 row.append(bookCycle)
