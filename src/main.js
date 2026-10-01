@@ -98,6 +98,7 @@ books.forEach((book, index) => {
   const spine = document.createElement('div')
   const tags = (book.tags || []).map((tag) => tagLabels[tag] || tag).join(', ')
   const displayTitle = normalizeBookTitle(book.title)
+  const hasThreeWords = displayTitle.split(/\s+/u).length === 3
   const farsiAuthor = /[\u0600-\u06ff]/.test(book.author)
   const classes = ['book']
   if (index % 6 === 0) classes.push('vintage-bands')
@@ -106,7 +107,8 @@ books.forEach((book, index) => {
   if (book.title !== 'A Philosophy of Software Design' && index % 10 === 3) classes.push('lean-right')
   if (book.title !== 'A Philosophy of Software Design' && index % 10 === 7) classes.push('lean-left')
   if (index === 5) classes.push('plant-neighbor')
-  if (displayTitle.length > 20) classes.push('wide-title')
+  if (displayTitle.length > 18) classes.push('wide-title')
+  if (hasThreeWords) classes.push('three-word-title')
   if (book.lang === 'fa') classes.push('farsi-book')
   spine.className = classes.join(' ')
   const bookLabel = book.lang === 'fa' ? `${book.title}، اثر ${book.author}` : `${book.title} by ${book.author}`
@@ -119,13 +121,14 @@ books.forEach((book, index) => {
   }
   spine.style.setProperty('--book', book.color)
   spine.style.setProperty('--accent', book.accent)
-  spine.style.setProperty('--height', `${book.height}px`)
+  const minimumHeight = displayTitle.length > 38 ? 238 : displayTitle.length > 18 ? 230 : 0
+  spine.style.setProperty('--height', `${Math.max(book.height, minimumHeight)}px`)
 
   const ornament = span('book-ornament')
   ornament.setAttribute('aria-hidden', 'true')
   const titleClasses = ['book-title']
   if (displayTitle.length > (book.lang === 'fa' ? 18 : 30)) titleClasses.push('compact')
-  if (displayTitle.length <= 14) titleClasses.push('single-line')
+  if (displayTitle.length <= 14 || hasThreeWords) titleClasses.push('single-line')
   const title = span(titleClasses.join(' '), displayTitle)
   const author = span(`book-author${farsiAuthor ? ' farsi-author' : ''}${book.author.length > (farsiAuthor ? 14 : 20) ? ' compact' : ''}`, book.author)
   author.lang = farsiAuthor ? 'fa' : 'und'
