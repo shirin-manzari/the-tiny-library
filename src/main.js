@@ -122,7 +122,10 @@ books.forEach((book, index) => {
 
   const ornament = span('book-ornament')
   ornament.setAttribute('aria-hidden', 'true')
-  const title = span(`book-title${displayTitle.length > (book.lang === 'fa' ? 18 : 30) ? ' compact' : ''}`, displayTitle)
+  const titleClasses = ['book-title']
+  if (displayTitle.length > (book.lang === 'fa' ? 18 : 30)) titleClasses.push('compact')
+  if (displayTitle.length <= 14) titleClasses.push('single-line')
+  const title = span(titleClasses.join(' '), displayTitle)
   const author = span(`book-author${farsiAuthor ? ' farsi-author' : ''}${book.author.length > (farsiAuthor ? 14 : 20) ? ' compact' : ''}`, book.author)
   author.lang = farsiAuthor ? 'fa' : 'und'
   author.dir = farsiAuthor ? 'rtl' : 'ltr'
