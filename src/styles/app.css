@@ -619,7 +619,12 @@ body {
   align-self: flex-end;
   transform: translateY(8px) scale(1.12);
   transform-origin: 50% 100%;
-  pointer-events: none;
+  cursor: pointer;
+}
+
+.shelf-plant:focus-visible {
+  outline: 2px solid #a97847;
+  outline-offset: 4px;
 }
 
 .plant-cactus {

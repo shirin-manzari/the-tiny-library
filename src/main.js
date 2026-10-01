@@ -95,9 +95,11 @@ shelf.style.setProperty(
 );
 
 function createPlant() {
-  const plant = document.createElement("div");
+  const plant = document.createElement("a");
   plant.className = "shelf-plant";
-  plant.setAttribute("aria-hidden", "true");
+  plant.href = "https://www.goodreads.com/user/show/81224485-shirin-manzari";
+  plant.setAttribute("aria-label", "Shirin Manzari on Goodreads");
+  plant.title = "Visit Shirin Manzari's Goodreads profile";
 
   const cactus = document.createElement("div");
   cactus.className = "plant-cactus";
