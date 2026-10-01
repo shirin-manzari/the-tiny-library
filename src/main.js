@@ -34,9 +34,10 @@ function selectDailyBooks(allBooks) {
   }
 
   shuffle(remaining)
-  selected.push(...remaining.slice(0, Math.max(0, 27 - selected.length)))
+  const extraCount = Math.max(0, 27 - selected.length)
+  selected.push(...remaining.slice(0, extraCount))
   shuffle(selected)
-  return selected
+  return { featured: selected, remaining: remaining.slice(extraCount) }
 }
 
 function span(className, text = '') {
@@ -55,9 +56,12 @@ const root = document.getElementById('app')
 
 if (!root) throw new Error('Application mount target not found')
 
-let books
+let featuredBooks
+let remainingBooks
 try {
-  books = selectDailyBooks(await loadBooks())
+  const selection = selectDailyBooks(await loadBooks())
+  featuredBooks = selection.featured
+  remainingBooks = selection.remaining
 } catch (error) {
   root.textContent = 'Could not load the book list. Please reload the page.'
   throw error
@@ -66,12 +70,12 @@ try {
 const shelf = document.createElement('main')
 shelf.className = 'shelf-display'
 shelf.setAttribute('aria-label', 'Books on a bookshelf')
-shelf.style.setProperty('--shelf-width', `${Math.min(1150, Math.max(520, books.length * 68 + 110))}px`)
+shelf.style.setProperty('--shelf-width', `${Math.min(1150, Math.max(520, featuredBooks.length * 68 + 110))}px`)
 
 const row = document.createElement('div')
 row.className = 'books-row'
 row.tabIndex = 0
-row.setAttribute('aria-label', 'Looping bookshelf; drag, scroll, or use the left and right arrow keys to browse')
+row.setAttribute('aria-label', "Today's books; drag, scroll, or use the left and right arrow keys to browse")
 
 const bookCycle = document.createElement('div')
 bookCycle.className = 'book-cycle'
@@ -94,62 +98,84 @@ function createPlant() {
 
 const tagLabels = { read: 'Read', 'currently-reading': 'Currently reading', 'to-read': 'Want to read' }
 
-books.forEach((book, index) => {
-  const spine = document.createElement('div')
-  const tags = (book.tags || []).map((tag) => tagLabels[tag] || tag).join(', ')
-  const displayTitle = normalizeBookTitle(book.title)
-  const hasThreeWords = displayTitle.split(/\s+/u).length === 3
-  const farsiAuthor = /[\u0600-\u06ff]/.test(book.author)
-  const classes = ['book']
-  if (index % 6 === 0) classes.push('vintage-bands')
-  else if (index % 7 === 2) classes.push('vintage-frame')
-  else if (index % 9 === 4) classes.push('vintage-crest')
-  if (book.title !== 'A Philosophy of Software Design' && index % 10 === 3) classes.push('lean-right')
-  if (book.title !== 'A Philosophy of Software Design' && index % 10 === 7) classes.push('lean-left')
-  if (index === 5) classes.push('plant-neighbor')
-  if (displayTitle.length > 18) classes.push('wide-title')
-  if (hasThreeWords) classes.push('three-word-title')
-  if (book.lang === 'fa') classes.push('farsi-book')
-  spine.className = classes.join(' ')
-  const bookLabel = book.lang === 'fa' ? `${book.title}، اثر ${book.author}` : `${book.title} by ${book.author}`
-  spine.setAttribute('aria-label', tags ? `${bookLabel}. ${tags}` : bookLabel)
-  spine.title = tags ? `${bookLabel} · ${tags}` : bookLabel
-  spine.dataset.tags = (book.tags || []).join(' ')
-  if (book.lang === 'fa') {
-    spine.lang = 'fa'
-    spine.dir = 'rtl'
-  }
-  spine.style.setProperty('--book', book.color)
-  spine.style.setProperty('--accent', book.accent)
-  const minimumHeight = displayTitle.length > 38 ? 238 : displayTitle.length > 18 ? 230 : 200
-  spine.style.setProperty('--height', `${Math.max(book.height, minimumHeight)}px`)
+function populateCycle(bookList, cycle, withPlant) {
+  bookList.forEach((book, index) => {
+    const spine = document.createElement('div')
+    const tags = (book.tags || []).map((tag) => tagLabels[tag] || tag).join(', ')
+    const displayTitle = normalizeBookTitle(book.title)
+    const hasThreeWords = displayTitle.split(/\s+/u).length === 3
+    const farsiAuthor = /[\u0600-\u06ff]/.test(book.author)
+    const classes = ['book']
+    if (index % 6 === 0) classes.push('vintage-bands')
+    else if (index % 7 === 2) classes.push('vintage-frame')
+    else if (index % 9 === 4) classes.push('vintage-crest')
+    if (book.title !== 'A Philosophy of Software Design' && index % 10 === 3) classes.push('lean-right')
+    if (book.title !== 'A Philosophy of Software Design' && index % 10 === 7) classes.push('lean-left')
+    if (withPlant && index === 5) classes.push('plant-neighbor')
+    if (displayTitle.length > 18) classes.push('wide-title')
+    if (hasThreeWords) classes.push('three-word-title')
+    if (book.lang === 'fa') classes.push('farsi-book')
+    spine.className = classes.join(' ')
+    const bookLabel = book.lang === 'fa' ? `${book.title}، اثر ${book.author}` : `${book.title} by ${book.author}`
+    spine.setAttribute('aria-label', tags ? `${bookLabel}. ${tags}` : bookLabel)
+    spine.title = tags ? `${bookLabel} · ${tags}` : bookLabel
+    spine.dataset.tags = (book.tags || []).join(' ')
+    if (book.lang === 'fa') {
+      spine.lang = 'fa'
+      spine.dir = 'rtl'
+    }
+    spine.style.setProperty('--book', book.color)
+    spine.style.setProperty('--accent', book.accent)
+    const minimumHeight = displayTitle.length > 38 ? 238 : displayTitle.length > 18 ? 230 : 200
+    spine.style.setProperty('--height', `${Math.max(book.height, minimumHeight)}px`)
 
-  const ornament = span('book-ornament')
-  ornament.setAttribute('aria-hidden', 'true')
-  const titleClasses = ['book-title']
-  if (displayTitle.length > (book.lang === 'fa' ? 18 : 30)) titleClasses.push('compact')
-  if (displayTitle.length <= 14 || hasThreeWords) titleClasses.push('single-line')
-  const title = span(titleClasses.join(' '), displayTitle)
-  const author = span(`book-author${farsiAuthor ? ' farsi-author' : ''}${book.author.length > (farsiAuthor ? 14 : 20) ? ' compact' : ''}`, book.author)
-  author.lang = farsiAuthor ? 'fa' : 'und'
-  author.dir = farsiAuthor ? 'rtl' : 'ltr'
-  spine.append(
-    span('book-cap'),
-    ornament,
-    title,
-    span('book-rule'),
-    author,
-    span('book-mark', '✳'),
-  )
-  bookCycle.append(spine)
-  if (index === 5) bookCycle.append(createPlant())
-})
+    const ornament = span('book-ornament')
+    ornament.setAttribute('aria-hidden', 'true')
+    const titleClasses = ['book-title']
+    if (displayTitle.length > (book.lang === 'fa' ? 18 : 30)) titleClasses.push('compact')
+    if (displayTitle.length <= 14 || hasThreeWords) titleClasses.push('single-line')
+    const title = span(titleClasses.join(' '), displayTitle)
+    const author = span(`book-author${farsiAuthor ? ' farsi-author' : ''}${book.author.length > (farsiAuthor ? 14 : 20) ? ' compact' : ''}`, book.author)
+    author.lang = farsiAuthor ? 'fa' : 'und'
+    author.dir = farsiAuthor ? 'rtl' : 'ltr'
+    spine.append(
+      span('book-cap'),
+      ornament,
+      title,
+      span('book-rule'),
+      author,
+      span('book-mark', '✳'),
+    )
+    cycle.append(spine)
+    if (withPlant && index === 5) cycle.append(createPlant())
+  })
+}
+
+populateCycle(featuredBooks, bookCycle, true)
 
 row.append(bookCycle)
 const woodShelf = document.createElement('div')
 woodShelf.className = 'wood-shelf'
 woodShelf.append(span('wood-line'), span('wood-line second'))
 shelf.append(row, woodShelf)
+
+let secondRow = null
+let secondCycle = null
+if (remainingBooks.length) {
+  secondRow = document.createElement('div')
+  secondRow.className = 'books-row'
+  secondRow.tabIndex = 0
+  secondRow.setAttribute('aria-label', 'Remaining books; drag, scroll, or use the left and right arrow keys to browse')
+  secondCycle = document.createElement('div')
+  secondCycle.className = 'book-cycle'
+  populateCycle(remainingBooks, secondCycle, false)
+  secondRow.append(secondCycle)
+
+  const secondWoodShelf = document.createElement('div')
+  secondWoodShelf.className = 'wood-shelf'
+  secondWoodShelf.append(span('wood-line'), span('wood-line second'))
+  shelf.append(secondRow, secondWoodShelf)
+}
 
 const preview = document.createElement('figure')
 preview.className = 'project-preview'
@@ -160,128 +186,137 @@ previewImage.loading = 'lazy'
 preview.append(previewImage)
 root.replaceChildren(shelf, preview)
 
-let drag = null
-let cycleWidth = 0
-let sideCopies = 0
-const shadowObserver = new ResizeObserver((entries) => {
-  for (const entry of entries) {
-    const height = entry.target.offsetHeight
-    const scale = Math.max(0.8, Math.min(1.5, height / 220))
-    entry.target.style.setProperty('--shadow-offset', `${Math.round(8 * scale)}px`)
-    entry.target.style.setProperty('--shadow-blur', `${Math.round(16 * scale)}px`)
-    entry.target.style.setProperty('--hover-shadow-blur', `${Math.round(40 * scale)}px`)
-    entry.target.style.setProperty('--hover-shadow-spread', `${-Math.round(6 * scale)}px`)
-  }
-})
+function setupLoop(row, bookCycle) {
+  let drag = null
+  let cycleWidth = 0
+  let sideCopies = 0
+  const shadowObserver = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+      const height = entry.target.offsetHeight
+      const scale = Math.max(0.8, Math.min(1.5, height / 220))
+      entry.target.style.setProperty('--shadow-offset', `${Math.round(8 * scale)}px`)
+      entry.target.style.setProperty('--shadow-blur', `${Math.round(16 * scale)}px`)
+      entry.target.style.setProperty('--hover-shadow-blur', `${Math.round(40 * scale)}px`)
+      entry.target.style.setProperty('--hover-shadow-spread', `${-Math.round(6 * scale)}px`)
+    }
+  })
 
-function cloneCycle() {
-  const clone = bookCycle.cloneNode(true)
-  clone.setAttribute('aria-hidden', 'true')
-  return clone
-}
-
-function centerLoop() {
-  if (!cycleWidth) return
-  const offset = row.scrollLeft - sideCopies * cycleWidth
-  if (Math.abs(offset) <= cycleWidth / 2) return
-
-  const shift = -Math.round(offset / cycleWidth) * cycleWidth
-  row.scrollLeft += shift
-  if (drag) drag.scrollLeft += shift
-}
-
-function layoutLoop() {
-  const relativePosition = cycleWidth ? (row.scrollLeft - sideCopies * cycleWidth) / cycleWidth : 0
-  const nextWidth = bookCycle.getBoundingClientRect().width
-  if (!nextWidth) return
-
-  const nextSideCopies = Math.max(1, Math.ceil(row.clientWidth / nextWidth))
-  if (nextSideCopies !== sideCopies) {
-    const fragment = document.createDocumentFragment()
-    for (let i = 0; i < nextSideCopies; i++) fragment.append(cloneCycle())
-    fragment.append(bookCycle)
-    for (let i = 0; i < nextSideCopies; i++) fragment.append(cloneCycle())
-    row.replaceChildren(fragment)
-    shadowObserver.disconnect()
-    row.querySelectorAll('.book').forEach((book) => shadowObserver.observe(book))
+  function cloneCycle() {
+    const clone = bookCycle.cloneNode(true)
+    clone.setAttribute('aria-hidden', 'true')
+    return clone
   }
 
-  cycleWidth = nextWidth
-  sideCopies = nextSideCopies
-  row.scrollLeft = (sideCopies + relativePosition) * cycleWidth
-  centerLoop()
-}
+  function centerLoop() {
+    if (!cycleWidth) return
+    const offset = row.scrollLeft - sideCopies * cycleWidth
+    if (Math.abs(offset) <= cycleWidth / 2) return
 
-layoutLoop()
-window.addEventListener('resize', layoutLoop)
-row.addEventListener('scroll', centerLoop, { passive: true })
+    const shift = -Math.round(offset / cycleWidth) * cycleWidth
+    row.scrollLeft += shift
+    if (drag) drag.scrollLeft += shift
+  }
 
-let keyAnimation = null
+  function layoutLoop() {
+    const relativePosition = cycleWidth ? (row.scrollLeft - sideCopies * cycleWidth) / cycleWidth : 0
+    const nextWidth = bookCycle.getBoundingClientRect().width
+    if (!nextWidth) return
 
-function stopKeyAnimation() {
-  if (keyAnimation !== null) cancelAnimationFrame(keyAnimation)
-  keyAnimation = null
-}
+    const nextSideCopies = Math.max(1, Math.ceil(row.clientWidth / nextWidth))
+    if (nextSideCopies !== sideCopies) {
+      const fragment = document.createDocumentFragment()
+      for (let i = 0; i < nextSideCopies; i++) fragment.append(cloneCycle())
+      fragment.append(bookCycle)
+      for (let i = 0; i < nextSideCopies; i++) fragment.append(cloneCycle())
+      row.replaceChildren(fragment)
+      shadowObserver.disconnect()
+      row.querySelectorAll('.book').forEach((book) => shadowObserver.observe(book))
+    }
 
-row.addEventListener('pointerdown', (event) => {
-  if (event.pointerType === 'touch' || event.button !== 0 || row.scrollWidth <= row.clientWidth) return
-  stopKeyAnimation()
-  drag = { pointerId: event.pointerId, x: event.clientX, scrollLeft: row.scrollLeft }
-  row.setPointerCapture(event.pointerId)
-  row.classList.add('is-dragging')
-})
-
-row.addEventListener('pointermove', (event) => {
-  if (!drag || event.pointerId !== drag.pointerId) return
-  row.scrollLeft = drag.scrollLeft - (event.clientX - drag.x)
-  centerLoop()
-})
-
-function endDrag(event) {
-  if (!drag || event.pointerId !== drag.pointerId) return
-  if (row.hasPointerCapture(event.pointerId)) row.releasePointerCapture(event.pointerId)
-  row.classList.remove('is-dragging')
-  drag = null
-}
-
-row.addEventListener('pointerup', endDrag)
-row.addEventListener('pointercancel', endDrag)
-
-row.addEventListener('wheel', (event) => {
-  if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return
-  if (!cycleWidth) return
-
-  stopKeyAnimation()
-  const multiplier = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? row.clientWidth : 1
-  event.preventDefault()
-  row.scrollLeft += event.deltaY * multiplier
-  centerLoop()
-}, { passive: false })
-
-function moveShelf(distance) {
-  stopKeyAnimation()
-  let startedAt = null
-  let previousProgress = 0
-
-  function frame(now) {
-    if (startedAt === null) startedAt = now
-    const progress = Math.min(1, (now - startedAt) / 300)
-    const eased = 1 - (1 - progress) ** 3
-    row.scrollLeft += distance * (eased - previousProgress)
+    cycleWidth = nextWidth
+    sideCopies = nextSideCopies
+    row.scrollLeft = (sideCopies + relativePosition) * cycleWidth
     centerLoop()
-    previousProgress = eased
-    keyAnimation = progress < 1 ? requestAnimationFrame(frame) : null
   }
 
-  keyAnimation = requestAnimationFrame(frame)
+  layoutLoop()
+  window.addEventListener('resize', layoutLoop)
+  row.addEventListener('scroll', centerLoop, { passive: true })
+
+  let keyAnimation = null
+
+  function stopKeyAnimation() {
+    if (keyAnimation !== null) cancelAnimationFrame(keyAnimation)
+    keyAnimation = null
+  }
+
+  row.addEventListener('pointerdown', (event) => {
+    if (event.pointerType === 'touch' || event.button !== 0 || row.scrollWidth <= row.clientWidth) return
+    stopKeyAnimation()
+    drag = { pointerId: event.pointerId, x: event.clientX, scrollLeft: row.scrollLeft }
+    row.setPointerCapture(event.pointerId)
+    row.classList.add('is-dragging')
+  })
+
+  row.addEventListener('pointermove', (event) => {
+    if (!drag || event.pointerId !== drag.pointerId) return
+    row.scrollLeft = drag.scrollLeft - (event.clientX - drag.x)
+    centerLoop()
+  })
+
+  function endDrag(event) {
+    if (!drag || event.pointerId !== drag.pointerId) return
+    if (row.hasPointerCapture(event.pointerId)) row.releasePointerCapture(event.pointerId)
+    row.classList.remove('is-dragging')
+    drag = null
+  }
+
+  row.addEventListener('pointerup', endDrag)
+  row.addEventListener('pointercancel', endDrag)
+
+  row.addEventListener('wheel', (event) => {
+    if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return
+    if (!cycleWidth) return
+
+    stopKeyAnimation()
+    const multiplier = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? row.clientWidth : 1
+    event.preventDefault()
+    row.scrollLeft += event.deltaY * multiplier
+    centerLoop()
+  }, { passive: false })
+
+  function moveShelf(distance) {
+    if (!cycleWidth) return
+    stopKeyAnimation()
+    let startedAt = null
+    let previousProgress = 0
+
+    function frame(now) {
+      if (startedAt === null) startedAt = now
+      const progress = Math.min(1, (now - startedAt) / 300)
+      const eased = 1 - (1 - progress) ** 3
+      row.scrollLeft += distance * (eased - previousProgress)
+      centerLoop()
+      previousProgress = eased
+      keyAnimation = progress < 1 ? requestAnimationFrame(frame) : null
+    }
+
+    keyAnimation = requestAnimationFrame(frame)
+  }
+
+  return { row, moveShelf }
 }
+
+const shelfControllers = [setupLoop(row, bookCycle)]
+if (secondRow) shelfControllers.push(setupLoop(secondRow, secondCycle))
 
 window.addEventListener('keydown', (event) => {
   if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return
   if (event.altKey || event.ctrlKey || event.metaKey) return
   if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable]')) return
-  if (!cycleWidth) return
 
+  const focusedRow = event.target instanceof Element ? event.target.closest('.books-row') : null
+  const controller = shelfControllers.find(({ row }) => row === focusedRow) || shelfControllers[0]
   event.preventDefault()
-  moveShelf(event.key === 'ArrowRight' ? 320 : -320)
+  controller.moveShelf(event.key === 'ArrowRight' ? 320 : -320)
 })
