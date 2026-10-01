@@ -33,9 +33,6 @@
 .book{--shadow-offset:8px;--shadow-blur:16px;--hover-shadow-blur:40px;--hover-shadow-spread:-6px;border-top:1px solid;border-image:linear-gradient(90deg,#45392f 0%,#d9c9ae 24%,#f5e8cf 55%,#bbac94 78%,#45392f 100%) 1;box-shadow:0 var(--shadow-offset) var(--shadow-blur) rgba(0,0,0,.32),inset -.35rem 0 .5rem rgba(0,0,0,.38),inset .35rem 0 .5rem rgba(0,0,0,.34),inset 0 1px 0 #fff5;transition:transform .25s ease,box-shadow .25s ease;}
 .book:hover{z-index:2;transform:translateY(-8px);box-shadow:0 var(--shadow-offset) var(--hover-shadow-blur) var(--hover-shadow-spread) rgba(0,0,0,.48),inset -.35rem 0 .5rem rgba(0,0,0,.38),inset .35rem 0 .5rem rgba(0,0,0,.34),inset 0 1px 0 #fff5}
 .wood-shelf{z-index:1;position:relative}
-.project-preview{width:min(1150px,calc(100% - 64px));margin:0 auto 48px}
-.project-preview img{display:block;width:100%;height:auto;box-shadow:0 .5rem 2rem rgba(0,0,0,.18)}
-@media(max-width:700px){.project-preview{width:calc(100% - 24px);margin-bottom:24px}}
 
 /* A few embossed motifs, like the gilt bands and stamped details on old bindings. */
 .book-ornament{position:absolute;z-index:1;inset:0;pointer-events:none;opacity:.78}
@@ -60,7 +57,7 @@
 .book:hover{transform:translateY(-8px) rotate(var(--lean))}
 /* A small glass jar with a butterfly on the lower shelf. */
 .shelf-jar{position:relative;flex:0 0 96px;height:142px;margin-inline:8px;align-self:flex-end;pointer-events:none;filter:drop-shadow(3px 5px 3px #47372744)}
-.jar-lid{position:absolute;z-index:4;top:0;left:14px;width:68px;height:15px;border:1px solid #715037;border-radius:5px 5px 2px 2px;background:linear-gradient(#b88c5b 0 22%,#866143 23% 40%,#b68a59 41% 67%,#75543d 68%);box-shadow:inset 0 2px #e6c39477,0 2px 2px #3d302133}
+.jar-lid{position:absolute;z-index:4;top:0;left:14px;width:68px;height:15px;border-radius:4px 4px 3px 3px;background:linear-gradient(90deg,#79543c,#a97852 45%,#79533b);box-shadow:inset 0 2px #c6996d99,0 2px 2px #54382f44}
 .jar-neck{position:absolute;z-index:2;top:11px;left:20px;width:56px;height:15px;border:2px solid #c7b8a4;border-radius:3px;background:#ddd2bd88}
 .jar-glass{position:absolute;bottom:0;left:6px;width:84px;height:121px;overflow:hidden;border:2px solid #ffffffa8;border-left-color:#c9d4cc;border-right-color:#9ca9a0;border-bottom-color:#849a91;border-radius:12px 12px 19px 19px;background:linear-gradient(90deg,#d4e2db77 0 12%,#f8f7eb55 28% 65%,#adc2b78c 100%);box-shadow:inset 5px 0 7px #ffffff99,inset -7px 0 10px #5d796a44,inset 0 -6px 5px #79928166,0 2px 2px #57473533}
 .jar-butterfly-scene{position:absolute;top:59px;left:5px;width:260px;height:120px;perspective:800px;perspective-origin:50% 50%;transform:scale(.21);transform-origin:top left;animation:jar-butterfly-wander 8s ease-in-out infinite}
@@ -69,8 +66,8 @@
 .jar-butterfly-scene .wing{background:#888;display:block;opacity:.7;outline:1px solid transparent;position:absolute;top:0}
 .jar-butterfly-scene .wing:first-child{animation:jar-leftflap 250ms cubic-bezier(.48,.01,.54,1) infinite alternate;height:1px;left:0;transform:rotateY(-20deg);transform-origin:700% 50%;width:1px;z-index:3}
 .jar-butterfly-scene .wing:last-child{animation:jar-rightflap 250ms cubic-bezier(.48,.01,.54,1) infinite alternate;right:0;transform:rotateY(200deg);z-index:1}
-.jar-butterfly-scene .bit{background:dodgerblue}
-.jar-butterfly-scene .bit:after{background:hsl(209.6deg 100% 65.88%);content:"";display:inline-block}
+.jar-butterfly-scene .bit{background:dodgerblue;box-shadow:6px 8px 8px #173b6580,inset -8px -6px 9px #125da766}
+.jar-butterfly-scene .bit:after{background:hsl(209.6deg 100% 65.88%);box-shadow:inset -4px -3px 6px #0d67ba66;content:"";display:inline-block}
 .jar-butterfly-scene .bit,.jar-butterfly-scene .bit:after{border-radius:50%;overflow:hidden;position:absolute;right:0;top:0;transform-origin:100% 50%}
 .jar-butterfly-scene .bit:first-child{height:70px;text-align:center;top:15px;transform:rotateZ(40deg);width:130px}
 .jar-butterfly-scene .bit:first-child:after{height:60px;left:-30px;top:5px;width:100px}
