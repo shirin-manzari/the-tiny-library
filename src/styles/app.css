@@ -28,8 +28,8 @@
 .book.wide-title{flex-basis:clamp(46px,6vw,72px);min-height:var(--height)}
 .book.wide-title .book-title{max-width:100%}
 .books-row{padding-bottom:12px;margin-bottom:-12px}
-.book{border-top:1px solid;border-image:linear-gradient(90deg,#45392f 0%,#d9c9ae 24%,#f5e8cf 55%,#bbac94 78%,#45392f 100%) 1;box-shadow:0 .5rem 1rem rgba(0,0,0,.32),inset -.35rem 0 .5rem rgba(0,0,0,.38),inset .35rem 0 .5rem rgba(0,0,0,.34),inset 0 1px 0 #fff5;transition:transform .25s ease,box-shadow .25s ease;}
-.book:hover{z-index:2;transform:translateY(-8px) scale(1.02);box-shadow:0 .5rem 2.5rem -.4rem rgba(0,0,0,.48),inset -.35rem 0 .5rem rgba(0,0,0,.38),inset .35rem 0 .5rem rgba(0,0,0,.34),inset 0 1px 0 #fff5}
+.book{--shadow-offset:8px;--shadow-blur:16px;--hover-shadow-blur:40px;--hover-shadow-spread:-6px;border-top:1px solid;border-image:linear-gradient(90deg,#45392f 0%,#d9c9ae 24%,#f5e8cf 55%,#bbac94 78%,#45392f 100%) 1;box-shadow:0 var(--shadow-offset) var(--shadow-blur) rgba(0,0,0,.32),inset -.35rem 0 .5rem rgba(0,0,0,.38),inset .35rem 0 .5rem rgba(0,0,0,.34),inset 0 1px 0 #fff5;transition:transform .25s ease,box-shadow .25s ease;}
+.book:hover{z-index:2;transform:translateY(-8px) scale(1.02);box-shadow:0 var(--shadow-offset) var(--hover-shadow-blur) var(--hover-shadow-spread) rgba(0,0,0,.48),inset -.35rem 0 .5rem rgba(0,0,0,.38),inset .35rem 0 .5rem rgba(0,0,0,.34),inset 0 1px 0 #fff5}
 .wood-shelf{z-index:1;position:relative}
 .project-preview{width:min(1150px,calc(100% - 64px));margin:0 auto 48px}
 .project-preview img{display:block;width:100%;height:auto;box-shadow:0 .5rem 2rem rgba(0,0,0,.18)}

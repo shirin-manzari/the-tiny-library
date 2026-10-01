@@ -1,5 +1,17 @@
 [
   {
+    "id": "28921",
+    "title": "The Remains of the Day",
+    "author": "Kazuo Ishiguro",
+    "color": "#bc675c",
+    "accent": "#f0d4ad",
+    "height": 170,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8989815614?utm_medium=api&utm_source=rss"
+  },
+  {
     "id": "218151117",
     "title": "Fundamentals of Software Architecture: A Modern Engineering Approach",
     "author": "Mark Richards",
@@ -912,18 +924,6 @@
       "to-read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/7696610358?utm_medium=api&utm_source=rss"
-  },
-  {
-    "id": "53531485",
-    "title": "Chol English-Tamil Dictionary",
-    "author": "Karky Research Inflection",
-    "color": "#c17a48",
-    "accent": "#f5e3b9",
-    "height": 168,
-    "tags": [
-      "to-read"
-    ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/4214385676?utm_medium=api&utm_source=rss"
   },
   {
     "id": "4005337",

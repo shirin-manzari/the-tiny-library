@@ -121,7 +121,7 @@ books.forEach((book, index) => {
   }
   spine.style.setProperty('--book', book.color)
   spine.style.setProperty('--accent', book.accent)
-  const minimumHeight = displayTitle.length > 38 ? 238 : displayTitle.length > 18 ? 230 : 0
+  const minimumHeight = displayTitle.length > 38 ? 238 : displayTitle.length > 18 ? 230 : 200
   spine.style.setProperty('--height', `${Math.max(book.height, minimumHeight)}px`)
 
   const ornament = span('book-ornament')
@@ -163,6 +163,16 @@ root.replaceChildren(shelf, preview)
 let drag = null
 let cycleWidth = 0
 let sideCopies = 0
+const shadowObserver = new ResizeObserver((entries) => {
+  for (const entry of entries) {
+    const height = entry.target.offsetHeight
+    const scale = Math.max(0.8, Math.min(1.5, height / 220))
+    entry.target.style.setProperty('--shadow-offset', `${Math.round(8 * scale)}px`)
+    entry.target.style.setProperty('--shadow-blur', `${Math.round(16 * scale)}px`)
+    entry.target.style.setProperty('--hover-shadow-blur', `${Math.round(40 * scale)}px`)
+    entry.target.style.setProperty('--hover-shadow-spread', `${-Math.round(6 * scale)}px`)
+  }
+})
 
 function cloneCycle() {
   const clone = bookCycle.cloneNode(true)
@@ -192,6 +202,8 @@ function layoutLoop() {
     fragment.append(bookCycle)
     for (let i = 0; i < nextSideCopies; i++) fragment.append(cloneCycle())
     row.replaceChildren(fragment)
+    shadowObserver.disconnect()
+    row.querySelectorAll('.book').forEach((book) => shadowObserver.observe(book))
   }
 
   cycleWidth = nextWidth
