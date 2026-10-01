@@ -58,6 +58,30 @@
 .book.three-word-title{height:auto;min-height:var(--height)}
 .book.three-word-title .book-title,.book.three-word-title .book-author{flex-shrink:0;max-height:none}
 .book:hover{transform:translateY(-8px) rotate(var(--lean)) scale(1.02)}
+/* A small glass jar with a butterfly on the lower shelf. */
+.shelf-jar{position:relative;flex:0 0 96px;height:142px;margin-inline:8px;align-self:flex-end;pointer-events:none;filter:drop-shadow(3px 5px 3px #47372744)}
+.jar-lid{position:absolute;z-index:4;top:0;left:14px;width:68px;height:15px;border:1px solid #715037;border-radius:5px 5px 2px 2px;background:linear-gradient(#b88c5b 0 22%,#866143 23% 40%,#b68a59 41% 67%,#75543d 68%);box-shadow:inset 0 2px #e6c39477,0 2px 2px #3d302133}
+.jar-neck{position:absolute;z-index:2;top:11px;left:20px;width:56px;height:15px;border:2px solid #c7b8a4;border-radius:3px;background:#ddd2bd88}
+.jar-glass{position:absolute;bottom:0;left:6px;width:84px;height:121px;overflow:hidden;border:2px solid #ffffffa8;border-left-color:#c9d4cc;border-right-color:#9ca9a0;border-bottom-color:#849a91;border-radius:12px 12px 19px 19px;background:linear-gradient(90deg,#d4e2db77 0 12%,#f8f7eb55 28% 65%,#adc2b78c 100%);box-shadow:inset 5px 0 7px #ffffff99,inset -7px 0 10px #5d796a44,inset 0 -6px 5px #79928166,0 2px 2px #57473533}
+.jar-butterfly-scene{position:absolute;top:59px;left:5px;width:260px;height:120px;perspective:800px;perspective-origin:50% 50%;transform:scale(.21);transform-origin:top left;animation:jar-butterfly-wander 8s ease-in-out infinite}
+.jar-butterfly-scene .butterfly{animation:jar-butterfly-hover 250ms cubic-bezier(.48,.01,.54,1) infinite alternate;position:relative;margin-left:130px;transform-style:preserve-3d;transform:rotateX(50deg) rotateY(20deg) rotateZ(-50deg) translateY(0);width:30px}
+.jar-butterfly-scene .butterfly:before{background:hsl(43.2deg 47.77% 14.22%);border-radius:50%;content:"";display:block;height:110px;left:50%;margin-left:-10px;outline:1px solid transparent;position:absolute;top:-15px;transform:rotateY(100deg);width:20px;z-index:2}
+.jar-butterfly-scene .wing{background:#888;display:block;opacity:.7;outline:1px solid transparent;position:absolute;top:0}
+.jar-butterfly-scene .wing:first-child{animation:jar-leftflap 250ms cubic-bezier(.48,.01,.54,1) infinite alternate;height:1px;left:0;transform:rotateY(-20deg);transform-origin:700% 50%;width:1px;z-index:3}
+.jar-butterfly-scene .wing:last-child{animation:jar-rightflap 250ms cubic-bezier(.48,.01,.54,1) infinite alternate;right:0;transform:rotateY(200deg);z-index:1}
+.jar-butterfly-scene .bit{background:dodgerblue}
+.jar-butterfly-scene .bit:after{background:hsl(209.6deg 100% 65.88%);content:"";display:inline-block}
+.jar-butterfly-scene .bit,.jar-butterfly-scene .bit:after{border-radius:50%;overflow:hidden;position:absolute;right:0;top:0;transform-origin:100% 50%}
+.jar-butterfly-scene .bit:first-child{height:70px;text-align:center;top:15px;transform:rotateZ(40deg);width:130px}
+.jar-butterfly-scene .bit:first-child:after{height:60px;left:-30px;top:5px;width:100px}
+.jar-butterfly-scene .bit:last-child{height:55px;transform:rotateZ(-40deg);width:100px}
+.jar-butterfly-scene .bit:last-child:after{height:45px;left:-24px;top:5px;width:60px;z-index:1}
+@keyframes jar-butterfly-hover{from{transform:rotateX(50deg) rotateY(20deg) rotateZ(-50deg) translateZ(0)}to{transform:rotateX(50deg) rotateY(20deg) rotateZ(-50deg) translateZ(-3px)}}
+@keyframes jar-butterfly-wander{0%,100%{transform:translate(-12px,8px) scale(.21)}25%{transform:translate(12px,-20px) scale(.21)}50%{transform:translate(14px,10px) scale(.21)}75%{transform:translate(-13px,-17px) scale(.21)}}
+@keyframes jar-leftflap{from{transform:rotateY(-20deg)}to{transform:rotateY(90deg)}}
+@keyframes jar-rightflap{from{transform:rotateY(200deg)}to{transform:rotateY(90deg)}}
+@media(prefers-reduced-motion:reduce){.jar-butterfly-scene,.jar-butterfly-scene .butterfly,.jar-butterfly-scene .wing{animation:none}}
+.jar-shine{position:absolute;z-index:3;top:8px;left:7px;width:8px;height:87px;border-radius:50%;background:#fff9;filter:blur(2px)}
 /* A little cactus */
 .shelf-plant{position:relative;flex:0 0 100px;height:185px;margin-inline:6px;align-self:flex-end;transform:translateY(8px) scale(1.12);transform-origin:50% 100%;pointer-events:none}
 .plant-cactus{position:absolute;z-index:2;inset:0 0 65px;filter:drop-shadow(2px 3px 2px #35412e33)}

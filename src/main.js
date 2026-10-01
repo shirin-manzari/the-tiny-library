@@ -96,9 +96,35 @@ function createPlant() {
   return plant
 }
 
+function createJar() {
+  const jar = document.createElement('div')
+  jar.className = 'shelf-jar'
+  jar.setAttribute('role', 'img')
+  jar.setAttribute('aria-label', 'Glass jar with a blue butterfly')
+  jar.append(span('jar-lid'), span('jar-neck'))
+
+  const glass = span('jar-glass')
+  const butterfly = document.createElement('div')
+  butterfly.className = 'butterfly'
+  for (let side = 0; side < 2; side++) {
+    const wing = document.createElement('div')
+    wing.className = 'wing'
+    wing.append(document.createElement('div'), document.createElement('div'))
+    wing.children[0].className = 'bit'
+    wing.children[1].className = 'bit'
+    butterfly.append(wing)
+  }
+  const scene = document.createElement('div')
+  scene.className = 'jar-butterfly-scene'
+  scene.append(butterfly)
+  glass.append(scene, span('jar-shine'))
+  jar.append(glass)
+  return jar
+}
+
 const tagLabels = { read: 'Read', 'currently-reading': 'Currently reading', 'to-read': 'Want to read' }
 
-function populateCycle(bookList, cycle, withPlant) {
+function populateCycle(bookList, cycle, withPlant, withJar = false) {
   bookList.forEach((book, index) => {
     const reviewUrl = typeof book.reviewUrl === 'string' ? book.reviewUrl.trim() : ''
     const spine = document.createElement(reviewUrl ? 'a' : 'div')
@@ -151,6 +177,7 @@ function populateCycle(bookList, cycle, withPlant) {
     )
     cycle.append(spine)
     if (withPlant && index === 5) cycle.append(createPlant())
+    if (withJar && index === 5) cycle.append(createJar())
   })
 }
 
@@ -171,7 +198,7 @@ if (remainingBooks.length) {
   secondRow.setAttribute('aria-label', 'Remaining books; drag, scroll, or use the left and right arrow keys to browse')
   secondCycle = document.createElement('div')
   secondCycle.className = 'book-cycle'
-  populateCycle(remainingBooks, secondCycle, false)
+  populateCycle(remainingBooks, secondCycle, false, true)
   secondRow.append(secondCycle)
 
   const secondWoodShelf = document.createElement('div')
