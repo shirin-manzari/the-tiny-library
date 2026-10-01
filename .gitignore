@@ -16,3 +16,5 @@
 # Dependencies and generated build output
 node_modules/
 dist/
+.vite/
+__pycache__/

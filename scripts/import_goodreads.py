@@ -2,7 +2,6 @@
 
 import hashlib
 import json
-import os
 from pathlib import Path
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree
@@ -108,7 +107,7 @@ def main():
         json.dumps(list(books_by_id.values()), ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    os.replace(temporary, OUTPUT)
+    temporary.replace(OUTPUT)
     summary = ", ".join(f"{tag}: {count}" for tag, count in counts.items())
     print(f"Imported {len(books_by_id)} books ({summary}) into {OUTPUT.name}")
 
