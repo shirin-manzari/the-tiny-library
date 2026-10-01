@@ -10,11 +10,15 @@
 .book{--book:#779077;--accent:#f3deb0;--height:180px;position:relative;flex:0 0 clamp(37px,5vw,61px);max-width:72px;height:var(--height);padding:10px 5px 9px;border:0;border-radius:2px 2px 0 0;background:var(--book);box-shadow:inset 1px 0 #ffffff28,1px 1px 1px #493a2928;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden}
 .book:before{content:"";position:absolute;inset:5px 4px;border-left:1px solid #ffffff28;border-right:1px solid #0000000c;pointer-events:none}
 .book-cap{position:absolute;top:0;left:0;right:0;height:4px;background:#ffffff19}
-.book-title{position:relative;min-height:0;writing-mode:vertical-rl;transform:rotate(180deg);font:600 clamp(9px,1vw,12px)/1.05 'Playfair Display',serif;text-align:center;max-height:calc(var(--height) - 40px);margin:4px 0;color:var(--accent);overflow:hidden}
-.farsi-book .book-title{transform:none;direction:rtl;text-orientation:sideways;font:600 clamp(10px,1vw,12px)/1.15 'Vazirmatn',Tahoma,sans-serif;white-space:nowrap}
+.book-title{position:relative;min-height:0;width:min(100%,2.2em);writing-mode:vertical-rl;transform:rotate(180deg);font:600 clamp(9px,1vw,12px)/.95 'Playfair Display',serif;text-align:center;max-height:calc(var(--height) - 40px);margin:4px 0;color:var(--accent);white-space:normal;overflow-wrap:anywhere;overflow:hidden}
+.farsi-book .book-title{transform:none;direction:rtl;text-orientation:sideways;font:600 clamp(9px,.9vw,11px)/.9 'Vazirmatn',Tahoma,sans-serif}
 .book-rule{width:48%;flex:0 0 1px;margin:5px 0;background:color-mix(in srgb,var(--accent),transparent 48%)}
-.book-author{min-height:0;writing-mode:vertical-rl;transform:rotate(180deg);font-size:7px;line-height:1;max-height:calc(var(--height) - 30px);overflow:hidden;color:var(--accent);opacity:.82}
-.farsi-book .book-author{transform:none;direction:rtl;text-orientation:sideways;font:500 8px/1.2 'Vazirmatn',Tahoma,sans-serif;white-space:nowrap}
+.book-author{min-height:0;width:min(100%,2.1em);writing-mode:vertical-rl;transform:rotate(180deg);font-size:7px;line-height:.9;text-align:center;max-height:calc(var(--height) - 30px);white-space:normal;overflow-wrap:anywhere;overflow:hidden;color:var(--accent);opacity:.82}
+.farsi-book .book-author.farsi-author{transform:none;direction:rtl;text-orientation:sideways;font:500 7px/.9 'Vazirmatn',Tahoma,sans-serif}
+.book-title.compact{font-size:9px;line-height:.9}
+.farsi-book .book-title.compact{font-size:8px;line-height:.88}
+.book-author.compact{font-size:6px;line-height:.9}
+.farsi-book .book-author.farsi-author.compact{font-size:6px;line-height:.88}
 .book-mark{font-size:10px;line-height:1;color:var(--accent)}
 .book:nth-child(4n+1){flex-basis:clamp(34px,4.2vw,51px)}.book:nth-child(5n+2){flex-basis:clamp(43px,6vw,72px)}.book:nth-child(7n+3){height:calc(var(--height) - 12px)}.book:nth-child(9n+4){height:calc(var(--height) + 8px)}
 .wood-shelf{width:100%;height:19px;position:relative;background:#a97847;box-shadow:inset 0 3px #bd8b57,0 4px 0 #cfbea6;border-radius:1px}

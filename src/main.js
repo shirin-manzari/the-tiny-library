@@ -46,6 +46,11 @@ function span(className, text = '') {
   return element
 }
 
+function normalizeBookTitle(title) {
+  const withoutParentheses = title.replace(/\s*(?:\([^()]*\)|（[^（）]*）)/g, '')
+  return withoutParentheses.split(/[:：]/, 1)[0].replace(/\s+/g, ' ').trim() || title
+}
+
 const root = document.getElementById('app')
 
 if (!root) throw new Error('Application mount target not found')
@@ -92,6 +97,8 @@ const tagLabels = { read: 'Read', 'currently-reading': 'Currently reading', 'to-
 books.forEach((book, index) => {
   const spine = document.createElement('div')
   const tags = (book.tags || []).map((tag) => tagLabels[tag] || tag).join(', ')
+  const displayTitle = normalizeBookTitle(book.title)
+  const farsiAuthor = /[\u0600-\u06ff]/.test(book.author)
   const classes = ['book']
   if (index % 6 === 0) classes.push('vintage-bands')
   else if (index % 7 === 2) classes.push('vintage-frame')
@@ -115,12 +122,16 @@ books.forEach((book, index) => {
 
   const ornament = span('book-ornament')
   ornament.setAttribute('aria-hidden', 'true')
+  const title = span(`book-title${displayTitle.length > (book.lang === 'fa' ? 18 : 30) ? ' compact' : ''}`, displayTitle)
+  const author = span(`book-author${farsiAuthor ? ' farsi-author' : ''}${book.author.length > (farsiAuthor ? 14 : 20) ? ' compact' : ''}`, book.author)
+  author.lang = farsiAuthor ? 'fa' : 'und'
+  author.dir = farsiAuthor ? 'rtl' : 'ltr'
   spine.append(
     span('book-cap'),
     ornament,
-    span('book-title', book.title),
+    title,
     span('book-rule'),
-    span('book-author', book.author),
+    author,
     span('book-mark', '✳'),
   )
   bookCycle.append(spine)
