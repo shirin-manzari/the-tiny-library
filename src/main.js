@@ -1,45 +1,10 @@
-const starterBooks = [
-  { title: 'The Creative Act', author: 'Rick Rubin', color: '#d67c57', accent: '#f4c77d', height: 190 },
-  { title: 'The Little Prince', author: 'Antoine de Saint-Exupéry', color: '#55866c', accent: '#e6c865', height: 164 },
-  { title: 'Steal Like an Artist', author: 'Austin Kleon', color: '#daae4e', accent: '#fff2cf', height: 178 },
-  { title: 'A Philosophy of Software Design', author: 'John Ousterhout', color: '#617c9e', accent: '#d6e1ed', height: 204 },
-  { title: 'The Design of Everyday Things', author: 'Don Norman', color: '#bc675c', accent: '#f0d4ad', height: 186 },
-  { title: 'The Pragmatic Programmer', author: 'David Thomas & Andrew Hunt', color: '#4c777c', accent: '#e7bb70', height: 199 },
-  { title: 'Tomorrow, and Tomorrow, and Tomorrow', author: 'Gabrielle Zevin', color: '#776397', accent: '#e5b778', height: 206 },
-  { title: 'How to Do Nothing', author: 'Jenny Odell', color: '#71875c', accent: '#e8d5a2', height: 182 },
-  { title: 'Piranesi', author: 'Susanna Clarke', color: '#568292', accent: '#f0d18e', height: 195 },
-  { title: 'Ways of Seeing', author: 'John Berger', color: '#c17a48', accent: '#f5e3b9', height: 169 },
-  { title: 'The Hobbit', author: 'J. R. R. Tolkien', color: '#405f48', accent: '#dbc88c', height: 201 },
-  { title: 'Jane Eyre', author: 'Charlotte Bronte', color: '#9c4f42', accent: '#edcf9a', height: 183 },
-  { title: 'Dune', author: 'Frank Herbert', color: '#b4834e', accent: '#f5dfb5', height: 208 },
-  { title: 'The Secret Garden', author: 'Frances Hodgson Burnett', color: '#668169', accent: '#e8d7aa', height: 174 },
-  { title: 'Beloved', author: 'Toni Morrison', color: '#6e5267', accent: '#e6c5a7', height: 194 },
-  { title: 'Frankenstein', author: 'Mary Shelley', color: '#4c6872', accent: '#d7cba8', height: 187 },
-  { title: 'The Night Circus', author: 'Erin Morgenstern', color: '#343f50', accent: '#e8d7c2', height: 203 },
-  { title: 'Normal People', author: 'Sally Rooney', color: '#7d8c6f', accent: '#f1e2bf', height: 177 },
-  { title: 'The Alchemist', author: 'Paulo Coelho', color: '#ac6949', accent: '#f2c980', height: 190 },
-  { title: 'A Room of One’s Own', author: 'Virginia Woolf', color: '#77739b', accent: '#e3d6b2', height: 180 },
-  { title: 'Invisible Cities', author: 'Italo Calvino', color: '#b45e59', accent: '#f0cfa5', height: 197 },
-  { title: 'The Bell Jar', author: 'Sylvia Plath', color: '#597c80', accent: '#e6d6af', height: 185 },
-  { title: 'بوف کور', author: 'صادق هدایت', color: '#493f53', accent: '#dfc3a0', height: 196, lang: 'fa' },
-  { title: 'سووشون', author: 'سیمین دانشور', color: '#855c4b', accent: '#f2d5a3', height: 186, lang: 'fa' },
-  { title: 'کلیدر', author: 'محمود دولت‌آبادی', color: '#59694b', accent: '#e9d7a4', height: 208, lang: 'fa' },
-  { title: 'چشم‌هایش', author: 'بزرگ علوی', color: '#315e68', accent: '#f0d4aa', height: 178, lang: 'fa' },
-  { title: 'سمفونی مردگان', author: 'عباس معروفی', color: '#763d4a', accent: '#e9c8a4', height: 214, lang: 'fa' },
-]
+async function loadBooks() {
+  const response = await fetch(new URL('../books.json', import.meta.url))
+  if (!response.ok) throw new Error(`Could not load books.json (${response.status})`)
 
-function loadBooks() {
-  try {
-    const saved = localStorage.getItem('tiny-library-goodreads-books')
-    const parsed = saved ? JSON.parse(saved) : null
-    if (!Array.isArray(parsed)) return starterBooks
-
-    const savedTitles = new Set(parsed.map((book) => book?.title?.toLowerCase()))
-    const newBooks = starterBooks.slice(10).filter((book) => !savedTitles.has(book.title.toLowerCase()))
-    return [...parsed, ...newBooks]
-  } catch {
-    return starterBooks
-  }
+  const books = await response.json()
+  if (!Array.isArray(books)) throw new Error('books.json must contain an array of books')
+  return books
 }
 
 function span(className, text = '') {
@@ -49,10 +14,17 @@ function span(className, text = '') {
   return element
 }
 
-const books = loadBooks()
 const root = document.getElementById('app')
 
 if (!root) throw new Error('Application mount target not found')
+
+let books
+try {
+  books = await loadBooks()
+} catch (error) {
+  root.textContent = 'Could not load the book list. Please reload the page.'
+  throw error
+}
 
 const shelf = document.createElement('main')
 shelf.className = 'shelf-display'
