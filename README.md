@@ -2,6 +2,8 @@
 
 A small Vanilla JavaScript and CSS bookshelf displaying books from public Goodreads shelves.
 
+![The Tiny Library bookshelf demo](demo.png)
+
 To preview locally, run this from the project directory and open http://localhost:8000:
 
 ```sh
