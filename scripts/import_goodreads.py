@@ -38,11 +38,14 @@ def previous_styles():
         books = json.loads(OUTPUT.read_text(encoding="utf-8"))
     except (FileNotFoundError, ValueError):
         return {}
-    return {
-        (book["title"].casefold(), book["author"].casefold()): book
-        for book in books
-        if isinstance(book, dict) and "title" in book and "author" in book
-    }
+    styles = {}
+    for book in books:
+        if not isinstance(book, dict) or "title" not in book or "author" not in book:
+            continue
+        styles[(book["title"].casefold(), book["author"].casefold())] = book
+        if book.get("id"):
+            styles[str(book["id"])] = book
+    return styles
 
 
 def fetch_items(url):
@@ -64,7 +67,7 @@ def book_from_item(item, styles):
 
     digest = hashlib.sha256(book_id.encode("utf-8")).digest()
     color, accent = PALETTE[digest[0] % len(PALETTE)]
-    previous = styles.get((title.casefold(), author.casefold()), {})
+    previous = styles.get(book_id) or styles.get((title.casefold(), author.casefold()), {})
     book = {
         "id": book_id,
         "title": title,
@@ -74,6 +77,7 @@ def book_from_item(item, styles):
         "height": previous.get("height", 164 + digest[1] % 51),
         "tags": [],
         "goodreadsUrl": (item.findtext("link") or "").strip(),
+        "reviewUrl": previous.get("reviewUrl") or "",
     }
     if previous.get("lang") == "fa" or any("\u0600" <= char <= "\u06ff" for char in title):
         book["lang"] = "fa"
@@ -92,8 +96,12 @@ def main():
             if book is None:
                 continue
             existing = books_by_id.setdefault(book["id"], book)
-            if tag not in existing["tags"]:
-                existing["tags"].append(tag)
+            custom_tags = (item.findtext("user_shelves") or "").split(",")
+            for book_tag in [tag, *(shelf.strip() for shelf in custom_tags)]:
+                if not book_tag or (book_tag in FEEDS and book_tag != tag):
+                    continue
+                if book_tag not in existing["tags"]:
+                    existing["tags"].append(book_tag)
 
     temporary = OUTPUT.with_suffix(".json.tmp")
     temporary.write_text(

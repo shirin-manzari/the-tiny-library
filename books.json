@@ -1,5 +1,186 @@
 [
   {
+    "id": "11084145",
+    "title": "Steve Jobs",
+    "author": "Walter Isaacson",
+    "color": "#b4834e",
+    "accent": "#f5dfb5",
+    "height": 167,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7069856960?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
+  },
+  {
+    "id": "119322",
+    "title": "The Golden Compass (His Dark Materials, #1)",
+    "author": "Philip Pullman",
+    "color": "#c17a48",
+    "accent": "#f5e3b9",
+    "height": 188,
+    "tags": [
+      "read",
+      "faraway-worlds"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8746098189?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
+  },
+  {
+    "id": "44083621",
+    "title": "Invisible Women: Data Bias in a World Designed for Men",
+    "author": "Caroline Criado Pérez",
+    "color": "#71875c",
+    "accent": "#e8d5a2",
+    "height": 184,
+    "tags": [
+      "read",
+      "feminist-reads"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7696610651?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
+  },
+  {
+    "id": "13557481",
+    "title": "سووشون",
+    "author": "سیمین دانشور",
+    "color": "#9c4f42",
+    "accent": "#edcf9a",
+    "height": 168,
+    "tags": [
+      "read",
+      "iranian-literature"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8989934895?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
+    "lang": "fa"
+  },
+  {
+    "id": "3828902",
+    "title": "Thinking In Systems: A Primer",
+    "author": "Donella H. Meadows",
+    "color": "#405f48",
+    "accent": "#dbc88c",
+    "height": 169,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7696610358?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
+  },
+  {
+    "id": "7332",
+    "title": "The Silmarillion",
+    "author": "J.R.R. Tolkien",
+    "color": "#405f48",
+    "accent": "#dbc88c",
+    "height": 212,
+    "tags": [
+      "read",
+      "faraway-worlds"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8989900366?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
+  },
+  {
+    "id": "33",
+    "title": "The Lord of the Rings (The Lord of the Rings, #1-3)",
+    "author": "J.R.R. Tolkien",
+    "color": "#daae4e",
+    "accent": "#fff2cf",
+    "height": 203,
+    "tags": [
+      "read",
+      "faraway-worlds"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8989900127?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
+  },
+  {
+    "id": "61215384",
+    "title": "The Return of the King (The Lord of the Rings, #3)",
+    "author": "J.R.R. Tolkien",
+    "color": "#776397",
+    "accent": "#e5b778",
+    "height": 206,
+    "tags": [
+      "read",
+      "faraway-worlds"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8989899896?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
+  },
+  {
+    "id": "61215372",
+    "title": "The Two Towers (The Lord of the Rings, #2)",
+    "author": "J.R.R. Tolkien",
+    "color": "#405f48",
+    "accent": "#dbc88c",
+    "height": 200,
+    "tags": [
+      "read",
+      "faraway-worlds"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8989899622?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
+  },
+  {
+    "id": "61215351",
+    "title": "The Fellowship of the Ring (The Lord of the Rings, #1)",
+    "author": "J.R.R. Tolkien",
+    "color": "#55866c",
+    "accent": "#e6c865",
+    "height": 210,
+    "tags": [
+      "read",
+      "faraway-worlds"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8989898848?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
+  },
+  {
+    "id": "5907",
+    "title": "The Hobbit, or There and Back Again",
+    "author": "J.R.R. Tolkien",
+    "color": "#405f48",
+    "accent": "#dbc88c",
+    "height": 175,
+    "tags": [
+      "read",
+      "faraway-worlds"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8989898117?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
+  },
+  {
+    "id": "3735293",
+    "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
+    "author": "Robert C. Martin",
+    "color": "#617c9e",
+    "accent": "#d6e1ed",
+    "height": 175,
+    "tags": [
+      "read",
+      "nerd-shelf"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8989896197?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
+  },
+  {
+    "id": "10255232",
+    "title": "Fundamentals of Digital Logic with Verilog Design",
+    "author": "Stephen D. Brown",
+    "color": "#405f48",
+    "accent": "#dbc88c",
+    "height": 186,
+    "tags": [
+      "read",
+      "nerd-shelf"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8592105665?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
+  },
+  {
     "id": "28921",
     "title": "The Remains of the Day",
     "author": "Kazuo Ishiguro",
@@ -9,7 +190,8 @@
     "tags": [
       "read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8989815614?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8989815614?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "218151117",
@@ -21,7 +203,8 @@
     "tags": [
       "read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8952535170?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8952535170?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "219719141",
@@ -34,6 +217,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8578099506?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -47,6 +231,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8816257937?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -57,9 +242,11 @@
     "accent": "#f0d4ad",
     "height": 184,
     "tags": [
-      "read"
+      "read",
+      "feminist-reads"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8640897217?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8640897217?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "34382384",
@@ -72,6 +259,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/3211596435?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -85,6 +273,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8635362980?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -98,6 +287,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8130246737?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -108,9 +298,11 @@
     "accent": "#dbc88c",
     "height": 194,
     "tags": [
-      "read"
+      "read",
+      "iranian-literature"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/7940347083?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -124,6 +316,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8632734254?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -137,6 +330,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8587100730?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -147,9 +341,11 @@
     "accent": "#edcf9a",
     "height": 206,
     "tags": [
-      "read"
+      "read",
+      "iranian-literature"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8449953269?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -163,6 +359,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8549721445?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -176,6 +373,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8537582552?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -186,9 +384,11 @@
     "accent": "#dbc88c",
     "height": 176,
     "tags": [
-      "read"
+      "read",
+      "iranian-literature"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8491218557?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -199,9 +399,11 @@
     "accent": "#edcf9a",
     "height": 167,
     "tags": [
-      "read"
+      "read",
+      "iranian-literature"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8516164805?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -215,6 +417,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8486389356?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -228,6 +431,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8449950811?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -240,7 +444,8 @@
     "tags": [
       "read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8449934210?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8449934210?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "40392245",
@@ -253,6 +458,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8449931935?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -263,9 +469,11 @@
     "accent": "#f0d18e",
     "height": 199,
     "tags": [
-      "read"
+      "read",
+      "iranian-literature"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8454965724?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -279,6 +487,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8449929519?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -289,9 +498,11 @@
     "accent": "#f0d18e",
     "height": 213,
     "tags": [
-      "read"
+      "read",
+      "iranian-literature"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8449927990?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -305,6 +516,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8338435964?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -318,6 +530,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8292070146?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -331,6 +544,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8292064919?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -344,6 +558,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/7940344921?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -356,7 +571,8 @@
     "tags": [
       "read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8105067627?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8105067627?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "14850542",
@@ -366,21 +582,11 @@
     "accent": "#d6e1ed",
     "height": 188,
     "tags": [
-      "read"
+      "read",
+      "feminist-reads"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7911457798?utm_medium=api&utm_source=rss"
-  },
-  {
-    "id": "44083621",
-    "title": "Invisible Women: Data Bias in a World Designed for Men",
-    "author": "Caroline Criado Pérez",
-    "color": "#71875c",
-    "accent": "#e8d5a2",
-    "height": 184,
-    "tags": [
-      "read"
-    ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7696610651?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7911457798?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "58267",
@@ -393,6 +599,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/7787714865?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -403,9 +610,11 @@
     "accent": "#f4c77d",
     "height": 166,
     "tags": [
-      "read"
+      "read",
+      "iranian-literature"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/7787717014?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -416,9 +625,11 @@
     "accent": "#f0d4aa",
     "height": 178,
     "tags": [
-      "read"
+      "read",
+      "iranian-literature"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/7784586978?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -432,6 +643,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/7757271576?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -444,7 +656,8 @@
     "tags": [
       "read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7758534998?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7758534998?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "654626",
@@ -457,6 +670,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/4214302967?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -469,7 +683,8 @@
     "tags": [
       "read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7720519169?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7720519169?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "3",
@@ -481,7 +696,8 @@
     "tags": [
       "read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/4214380487?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/4214380487?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "6294",
@@ -493,7 +709,8 @@
     "tags": [
       "read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7712201154?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7712201154?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "13589193",
@@ -506,6 +723,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/6716619122?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -519,6 +737,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/5876598973?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -531,7 +750,8 @@
     "tags": [
       "read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/5556824045?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/5556824045?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "28352598",
@@ -544,6 +764,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/4091247597?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -554,9 +775,11 @@
     "accent": "#f4c77d",
     "height": 179,
     "tags": [
-      "read"
+      "read",
+      "iranian-literature"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/4370887496?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -570,6 +793,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/3734276576?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -583,6 +807,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/5069893065?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -596,6 +821,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/3980185719?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -608,7 +834,8 @@
     "tags": [
       "read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/3914631407?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/3914631407?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "40101085",
@@ -621,6 +848,7 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/3906206045?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -634,19 +862,22 @@
       "read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/2370647431?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
-    "id": "119322",
-    "title": "The Golden Compass (His Dark Materials, #1)",
-    "author": "Philip Pullman",
-    "color": "#c17a48",
-    "accent": "#f5e3b9",
-    "height": 188,
+    "id": "22800567",
+    "title": "Fluent Python: Clear, Concise, and Effective Programming",
+    "author": "Luciano Ramalho",
+    "color": "#6e5267",
+    "accent": "#e6c5a7",
+    "height": 178,
     "tags": [
-      "currently-reading"
+      "currently-reading",
+      "nerd-shelf"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8746098189?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8989893493?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "62919375",
@@ -658,7 +889,8 @@
     "tags": [
       "currently-reading"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8709464261?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8709464261?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "209234015",
@@ -668,21 +900,11 @@
     "accent": "#f5dfb5",
     "height": 211,
     "tags": [
-      "currently-reading"
+      "currently-reading",
+      "nerd-shelf"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8611190152?utm_medium=api&utm_source=rss"
-  },
-  {
-    "id": "10255232",
-    "title": "Fundamentals of Digital Logic with Verilog Design",
-    "author": "Stephen D. Brown",
-    "color": "#405f48",
-    "accent": "#dbc88c",
-    "height": 186,
-    "tags": [
-      "currently-reading"
-    ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8592105665?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8611190152?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "171122",
@@ -695,6 +917,7 @@
       "currently-reading"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/8580807339?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   },
   {
@@ -707,7 +930,8 @@
     "tags": [
       "currently-reading"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8567262802?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8567262802?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "68428",
@@ -719,19 +943,50 @@
     "tags": [
       "currently-reading"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7714194136?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7714194136?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
-    "id": "11084145",
-    "title": "Steve Jobs",
-    "author": "Walter Isaacson",
+    "id": "216848047",
+    "title": "AI Engineering: Building Applications with Foundation Models",
+    "author": "Chip Huyen",
+    "color": "#daae4e",
+    "accent": "#fff2cf",
+    "height": 198,
+    "tags": [
+      "to-read",
+      "nerd-shelf"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8989917620?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
+  },
+  {
+    "id": "1471873",
+    "title": "The Princeton Companion to Mathematics",
+    "author": "Timothy Gowers",
     "color": "#b4834e",
     "accent": "#f5dfb5",
     "height": 167,
     "tags": [
-      "currently-reading"
+      "to-read",
+      "nerd-shelf"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7069856960?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8989902801?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
+  },
+  {
+    "id": "23463279",
+    "title": "Designing Data-Intensive Applications",
+    "author": "Martin Kleppmann",
+    "color": "#b4834e",
+    "accent": "#f5dfb5",
+    "height": 176,
+    "tags": [
+      "to-read",
+      "nerd-shelf"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8989893906?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "245544838",
@@ -743,7 +998,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8968491973?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8968491973?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "6149",
@@ -755,7 +1011,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8894902371?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8894902371?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "41637836",
@@ -767,7 +1024,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8746098169?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8746098169?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "18122",
@@ -779,7 +1037,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8746097857?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8746097857?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "48635408",
@@ -791,7 +1050,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8689212499?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8689212499?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "2839",
@@ -803,7 +1063,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8660670212?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8660670212?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "54493401",
@@ -815,7 +1076,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/8592104869?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8592104869?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "11324722",
@@ -827,7 +1089,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7818169319?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7818169319?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "61771675",
@@ -839,7 +1102,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7720240825?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7720240825?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "15839976",
@@ -851,7 +1115,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7719855558?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7719855558?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "77566",
@@ -863,7 +1128,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7718133440?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7718133440?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "456183",
@@ -875,7 +1141,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7696628714?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7696628714?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "15930573",
@@ -887,7 +1154,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7696627400?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7696627400?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "49176",
@@ -899,7 +1167,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7696610732?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7696610732?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "17801996",
@@ -911,19 +1180,8 @@
     "tags": [
       "to-read"
     ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7696610553?utm_medium=api&utm_source=rss"
-  },
-  {
-    "id": "3828902",
-    "title": "Thinking In Systems: A Primer",
-    "author": "Donella H. Meadows",
-    "color": "#405f48",
-    "accent": "#dbc88c",
-    "height": 169,
-    "tags": [
-      "to-read"
-    ],
-    "goodreadsUrl": "https://www.goodreads.com/review/show/7696610358?utm_medium=api&utm_source=rss"
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7696610553?utm_medium=api&utm_source=rss",
+    "reviewUrl": ""
   },
   {
     "id": "4005337",
@@ -936,6 +1194,7 @@
       "to-read"
     ],
     "goodreadsUrl": "https://www.goodreads.com/review/show/3906240073?utm_medium=api&utm_source=rss",
+    "reviewUrl": "",
     "lang": "fa"
   }
 ]

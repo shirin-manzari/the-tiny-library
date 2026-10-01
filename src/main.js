@@ -100,7 +100,9 @@ const tagLabels = { read: 'Read', 'currently-reading': 'Currently reading', 'to-
 
 function populateCycle(bookList, cycle, withPlant) {
   bookList.forEach((book, index) => {
-    const spine = document.createElement('div')
+    const reviewUrl = typeof book.reviewUrl === 'string' ? book.reviewUrl.trim() : ''
+    const spine = document.createElement(reviewUrl ? 'a' : 'div')
+    if (reviewUrl) spine.href = reviewUrl
     const tags = (book.tags || []).map((tag) => tagLabels[tag] || tag).join(', ')
     const displayTitle = normalizeBookTitle(book.title)
     const hasThreeWords = displayTitle.split(/\s+/u).length === 3

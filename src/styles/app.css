@@ -8,6 +8,7 @@
 .books-row:focus-visible{outline:2px solid #a97847;outline-offset:3px}
 .book-cycle{display:flex;align-items:flex-end;align-self:stretch;flex:none;width:max-content;gap:0}
 .book{--book:#779077;--accent:#f3deb0;--height:180px;position:relative;flex:0 0 clamp(37px,5vw,61px);max-width:72px;height:var(--height);padding:10px 5px 9px;border:0;border-radius:2px 2px 0 0;background:var(--book);box-shadow:inset 1px 0 #ffffff28,1px 1px 1px #493a2928;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden}
+.book[href]{text-decoration:none;cursor:pointer}
 .book:before{content:"";position:absolute;inset:5px 4px;border-left:1px solid #ffffff28;border-right:1px solid #0000000c;pointer-events:none}
 .book-cap{position:absolute;top:0;left:0;right:0;height:4px;background:#ffffff19}
 .book-title{position:relative;min-height:0;width:fit-content;max-width:min(100%,2.2em);writing-mode:vertical-rl;transform:rotate(180deg);font:600 clamp(9px,1vw,12px)/.95 'Playfair Display',serif;text-align:center;max-height:calc(var(--height) - 40px);margin:4px 0;color:var(--accent);white-space:normal;overflow-wrap:anywhere;overflow:hidden}
