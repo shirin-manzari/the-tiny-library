@@ -1,196 +1,941 @@
 [
   {
-    "title": "The Creative Act",
-    "author": "Rick Rubin",
-    "color": "#d67c57",
-    "accent": "#f4c77d",
-    "height": 190
-  },
-  {
-    "title": "The Little Prince",
-    "author": "Antoine de Saint-Exupéry",
-    "color": "#55866c",
-    "accent": "#e6c865",
-    "height": 164
-  },
-  {
-    "title": "Steal Like an Artist",
-    "author": "Austin Kleon",
-    "color": "#daae4e",
-    "accent": "#fff2cf",
-    "height": 178
-  },
-  {
-    "title": "A Philosophy of Software Design",
-    "author": "John Ousterhout",
-    "color": "#617c9e",
-    "accent": "#d6e1ed",
-    "height": 204
-  },
-  {
-    "title": "The Design of Everyday Things",
-    "author": "Don Norman",
-    "color": "#bc675c",
-    "accent": "#f0d4ad",
-    "height": 186
-  },
-  {
-    "title": "The Pragmatic Programmer",
-    "author": "David Thomas & Andrew Hunt",
-    "color": "#4c777c",
-    "accent": "#e7bb70",
-    "height": 199
-  },
-  {
-    "title": "Tomorrow, and Tomorrow, and Tomorrow",
-    "author": "Gabrielle Zevin",
-    "color": "#776397",
-    "accent": "#e5b778",
-    "height": 206
-  },
-  {
-    "title": "How to Do Nothing",
-    "author": "Jenny Odell",
-    "color": "#71875c",
-    "accent": "#e8d5a2",
-    "height": 182
-  },
-  {
-    "title": "Piranesi",
-    "author": "Susanna Clarke",
-    "color": "#568292",
-    "accent": "#f0d18e",
-    "height": 195
-  },
-  {
-    "title": "Ways of Seeing",
-    "author": "John Berger",
-    "color": "#c17a48",
-    "accent": "#f5e3b9",
-    "height": 169
-  },
-  {
-    "title": "The Hobbit",
-    "author": "J. R. R. Tolkien",
-    "color": "#405f48",
-    "accent": "#dbc88c",
-    "height": 201
-  },
-  {
-    "title": "Jane Eyre",
-    "author": "Charlotte Bronte",
-    "color": "#9c4f42",
-    "accent": "#edcf9a",
-    "height": 183
-  },
-  {
-    "title": "Dune",
-    "author": "Frank Herbert",
+    "id": "218151117",
+    "title": "Fundamentals of Software Architecture: A Modern Engineering Approach",
+    "author": "Mark Richards",
     "color": "#b4834e",
     "accent": "#f5dfb5",
-    "height": 208
+    "height": 180,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8952535170?utm_medium=api&utm_source=rss"
   },
   {
-    "title": "The Secret Garden",
-    "author": "Frances Hodgson Burnett",
-    "color": "#668169",
-    "accent": "#e8d7aa",
-    "height": 174
+    "id": "219719141",
+    "title": "گوزنِ بیچاره",
+    "author": "Claire Oshetsky",
+    "color": "#daae4e",
+    "accent": "#fff2cf",
+    "height": 176,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8578099506?utm_medium=api&utm_source=rss",
+    "lang": "fa"
   },
   {
-    "title": "Beloved",
-    "author": "Toni Morrison",
+    "id": "59697892",
+    "title": "بخت بیدادگر: داستان یک زندگی (پراگ، ۱۹۴۱-۱۹۶۸)",
+    "author": "Heda Margolius Kovály",
+    "color": "#405f48",
+    "accent": "#dbc88c",
+    "height": 187,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8816257937?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "220481360",
+    "title": "The New Age of Sexism: How AI and Emerging Technologies Are Reinventing Misogyny",
+    "author": "Laura Bates",
+    "color": "#bc675c",
+    "accent": "#f0d4ad",
+    "height": 184,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8640897217?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "34382384",
+    "title": "آکواریوم‌های پیونگ‌یانگ",
+    "author": "Kang Chol-Hwan",
+    "color": "#55866c",
+    "accent": "#e6c865",
+    "height": 185,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/3211596435?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "40392482",
+    "title": "کلیدر، جلد دهم",
+    "author": "Mahmoud Dowlatabadi",
+    "color": "#4c777c",
+    "accent": "#e7bb70",
+    "height": 209,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8635362980?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "52882322",
+    "title": "تکه‌هایی از یک کل منسجم",
+    "author": "پونه مقیمی",
+    "color": "#71875c",
+    "accent": "#e8d5a2",
+    "height": 189,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8130246737?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "185493",
+    "title": "کلیدر: دوره ۱۰ جلدی",
+    "author": "Mahmoud Dowlatabadi",
+    "color": "#405f48",
+    "accent": "#dbc88c",
+    "height": 194,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7940347083?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "40392406",
+    "title": "کلیدر، جلد نهم",
+    "author": "Mahmoud Dowlatabadi",
+    "color": "#d67c57",
+    "accent": "#f4c77d",
+    "height": 213,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8632734254?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "40392380",
+    "title": "کلیدر، جلد هشتم",
+    "author": "Mahmoud Dowlatabadi",
+    "color": "#bc675c",
+    "accent": "#f0d4ad",
+    "height": 194,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8587100730?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "60582798",
+    "title": "زمین سوخته",
+    "author": "احمد محمود",
+    "color": "#9c4f42",
+    "accent": "#edcf9a",
+    "height": 206,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8449953269?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "40392367",
+    "title": "کلیدر، جلد هفتم",
+    "author": "Mahmoud Dowlatabadi",
+    "color": "#9c4f42",
+    "accent": "#edcf9a",
+    "height": 166,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8549721445?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "40392350",
+    "title": "کلیدر، جلد ششم",
+    "author": "Mahmoud Dowlatabadi",
+    "color": "#4c777c",
+    "accent": "#e7bb70",
+    "height": 166,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8537582552?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "66610",
+    "title": "سگ ولگرد",
+    "author": "صادق هدایت",
+    "color": "#405f48",
+    "accent": "#dbc88c",
+    "height": 176,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8491218557?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "53061509",
+    "title": "چشم سگ",
+    "author": "Aliyeh Ataei",
+    "color": "#9c4f42",
+    "accent": "#edcf9a",
+    "height": 167,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8516164805?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "33011820",
+    "title": "صلحی که همه‌ صلح‌ها را بر باد داد",
+    "author": "David Fromkin",
+    "color": "#d67c57",
+    "accent": "#f4c77d",
+    "height": 183,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8486389356?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "4889072",
+    "title": "كوابيس بيروت",
+    "author": "Ghada Samman",
+    "color": "#4c777c",
+    "accent": "#e7bb70",
+    "height": 208,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8449950811?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "128029",
+    "title": "A Thousand Splendid Suns",
+    "author": "Khaled Hosseini",
+    "color": "#daae4e",
+    "accent": "#fff2cf",
+    "height": 167,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8449934210?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "40392245",
+    "title": "کلیدر، جلد پنجم",
+    "author": "Mahmoud Dowlatabadi",
+    "color": "#daae4e",
+    "accent": "#fff2cf",
+    "height": 187,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8449931935?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "465364",
+    "title": "اولدوز و عروسک سخنگو",
+    "author": "صمد بهرنگی",
+    "color": "#568292",
+    "accent": "#f0d18e",
+    "height": 199,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8454965724?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "40392204",
+    "title": "کلیدر، جلد چهارم",
+    "author": "Mahmoud Dowlatabadi",
+    "color": "#568292",
+    "accent": "#f0d18e",
+    "height": 178,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8449929519?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "74862",
+    "title": "ماهی سیاه کوچولو",
+    "author": "Samad Behrangi",
+    "color": "#568292",
+    "accent": "#f0d18e",
+    "height": 213,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8449927990?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "24991803",
+    "title": "کلیدر، جلد سوم",
+    "author": "Mahmoud Dowlatabadi",
+    "color": "#9c4f42",
+    "accent": "#edcf9a",
+    "height": 189,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8338435964?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "24785909",
+    "title": "کلیدر، جلد دوم",
+    "author": "Mahmoud Dowlatabadi",
     "color": "#6e5267",
     "accent": "#e6c5a7",
-    "height": 194
-  },
-  {
-    "title": "Frankenstein",
-    "author": "Mary Shelley",
-    "color": "#4c6872",
-    "accent": "#d7cba8",
-    "height": 187
-  },
-  {
-    "title": "The Night Circus",
-    "author": "Erin Morgenstern",
-    "color": "#343f50",
-    "accent": "#e8d7c2",
-    "height": 203
-  },
-  {
-    "title": "Normal People",
-    "author": "Sally Rooney",
-    "color": "#7d8c6f",
-    "accent": "#f1e2bf",
-    "height": 177
-  },
-  {
-    "title": "The Alchemist",
-    "author": "Paulo Coelho",
-    "color": "#ac6949",
-    "accent": "#f2c980",
-    "height": 190
-  },
-  {
-    "title": "A Room of One’s Own",
-    "author": "Virginia Woolf",
-    "color": "#77739b",
-    "accent": "#e3d6b2",
-    "height": 180
-  },
-  {
-    "title": "Invisible Cities",
-    "author": "Italo Calvino",
-    "color": "#b45e59",
-    "accent": "#f0cfa5",
-    "height": 197
-  },
-  {
-    "title": "The Bell Jar",
-    "author": "Sylvia Plath",
-    "color": "#597c80",
-    "accent": "#e6d6af",
-    "height": 185
-  },
-  {
-    "title": "بوف کور",
-    "author": "صادق هدایت",
-    "color": "#493f53",
-    "accent": "#dfc3a0",
-    "height": 196,
+    "height": 194,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8292070146?utm_medium=api&utm_source=rss",
     "lang": "fa"
   },
   {
-    "title": "سووشون",
-    "author": "سیمین دانشور",
-    "color": "#855c4b",
-    "accent": "#f2d5a3",
-    "height": 186,
+    "id": "45186042",
+    "title": "مغازه‌‌ی خودکشی",
+    "author": "Jean Teulé",
+    "color": "#daae4e",
+    "accent": "#fff2cf",
+    "height": 195,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8292064919?utm_medium=api&utm_source=rss",
     "lang": "fa"
   },
   {
-    "title": "کلیدر",
-    "author": "محمود دولت‌آبادی",
-    "color": "#59694b",
-    "accent": "#e9d7a4",
-    "height": 208,
+    "id": "24659066",
+    "title": "کلیدر، جلد اول",
+    "author": "Mahmoud Dowlatabadi",
+    "color": "#55866c",
+    "accent": "#e6c865",
+    "height": 168,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7940344921?utm_medium=api&utm_source=rss",
     "lang": "fa"
   },
   {
+    "id": "23014730",
+    "title": "A Thousand Miles to Freedom: My Escape from North Korea",
+    "author": "Eunsun Kim",
+    "color": "#6e5267",
+    "accent": "#e6c5a7",
+    "height": 213,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8105067627?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "14850542",
+    "title": "Recoding Gender: Women's Changing Participation in Computing (History of Computing)",
+    "author": "Janet Abbate",
+    "color": "#617c9e",
+    "accent": "#d6e1ed",
+    "height": 188,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7911457798?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "44083621",
+    "title": "Invisible Women: Data Bias in a World Designed for Men",
+    "author": "Caroline Criado Pérez",
+    "color": "#71875c",
+    "accent": "#e8d5a2",
+    "height": 184,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7696610651?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "58267",
+    "title": "زن زیادی",
+    "author": "جلال آل احمد",
+    "color": "#6e5267",
+    "accent": "#e6c5a7",
+    "height": 205,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7787714865?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "58255",
+    "title": "مدیر مدرسه",
+    "author": "جلال آل احمد",
+    "color": "#d67c57",
+    "accent": "#f4c77d",
+    "height": 166,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7787717014?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "67464",
     "title": "چشم‌هایش",
     "author": "بزرگ علوی",
     "color": "#315e68",
     "accent": "#f0d4aa",
     "height": 178,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7784586978?utm_medium=api&utm_source=rss",
     "lang": "fa"
   },
   {
-    "title": "سمفونی مردگان",
-    "author": "عباس معروفی",
-    "color": "#763d4a",
-    "accent": "#e9c8a4",
-    "height": 214,
+    "id": "52943788",
+    "title": "شوهر آهو خانم",
+    "author": "علی محمد افغانی",
+    "color": "#776397",
+    "accent": "#e5b778",
+    "height": 169,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7757271576?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "5",
+    "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "author": "J.K. Rowling",
+    "color": "#55866c",
+    "accent": "#e6c865",
+    "height": 209,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7758534998?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "654626",
+    "title": "چهار اثر از فلورانس اسکاول شین",
+    "author": "Florence Scovel Shinn",
+    "color": "#b4834e",
+    "accent": "#f5dfb5",
+    "height": 166,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/4214302967?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "47520",
+    "title": "Castle in the Air (Howl's Moving Castle, #2)",
+    "author": "Diana Wynne Jones",
+    "color": "#bc675c",
+    "accent": "#f0d4ad",
+    "height": 202,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7720519169?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "3",
+    "title": "Harry Potter and the Sorcerer's Stone (Harry Potter, #1)",
+    "author": "J.K. Rowling",
+    "color": "#568292",
+    "accent": "#f0d18e",
+    "height": 171,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/4214380487?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "6294",
+    "title": "Howl's Moving Castle (Howl's Moving Castle, #1)",
+    "author": "Diana Wynne Jones",
+    "color": "#568292",
+    "accent": "#f0d18e",
+    "height": 193,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7712201154?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "13589193",
+    "title": "نامه به کودکی که هرگز زاده نشد",
+    "author": "Oriana Fallaci",
+    "color": "#6e5267",
+    "accent": "#e6c5a7",
+    "height": 177,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/6716619122?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "2567953",
+    "title": "جاناتان مرغ دریایی",
+    "author": "Richard Bach",
+    "color": "#9c4f42",
+    "accent": "#edcf9a",
+    "height": 187,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/5876598973?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "50772888",
+    "title": "No Filter: The Inside Story of Instagram",
+    "author": "Sarah Frier",
+    "color": "#c17a48",
+    "accent": "#f5e3b9",
+    "height": 169,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/5556824045?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "28352598",
+    "title": "از حال بد به حال خوب: شناخت‌درمانی",
+    "author": "David D. Burns",
+    "color": "#568292",
+    "accent": "#f0d18e",
+    "height": 195,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/4091247597?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "302983",
+    "title": "جای خالی سلوچ",
+    "author": "Mahmoud Dowlatabadi",
+    "color": "#d67c57",
+    "accent": "#f4c77d",
+    "height": 179,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/4370887496?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "39849491",
+    "title": "زن چپ دست",
+    "author": "Peter Handke",
+    "color": "#405f48",
+    "accent": "#dbc88c",
+    "height": 196,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/3734276576?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "30590506",
+    "title": "دانش نشانه‌گذاری در خط فارسی",
+    "author": "ناصر نیکوبخت",
+    "color": "#405f48",
+    "accent": "#dbc88c",
+    "height": 175,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/5069893065?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "44580608",
+    "title": "دروغ‌هایی که به خود می‌گوییم",
+    "author": "Jon  Frederickson",
+    "color": "#9c4f42",
+    "accent": "#edcf9a",
+    "height": 173,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/3980185719?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "48318",
+    "title": "The Solitaire Mystery",
+    "author": "Jostein Gaarder",
+    "color": "#c17a48",
+    "accent": "#f5e3b9",
+    "height": 175,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/3914631407?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "40101085",
+    "title": "اساطیر نورس",
+    "author": "Neil Gaiman",
+    "color": "#b4834e",
+    "accent": "#f5dfb5",
+    "height": 201,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/3906206045?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "35049677",
+    "title": "درباره معنی زندگی",
+    "author": "Will Durant",
+    "color": "#9c4f42",
+    "accent": "#edcf9a",
+    "height": 172,
+    "tags": [
+      "read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/2370647431?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "119322",
+    "title": "The Golden Compass (His Dark Materials, #1)",
+    "author": "Philip Pullman",
+    "color": "#c17a48",
+    "accent": "#f5e3b9",
+    "height": 188,
+    "tags": [
+      "currently-reading"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8746098189?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "62919375",
+    "title": "Shark Heart",
+    "author": "Emily Habeck",
+    "color": "#6e5267",
+    "accent": "#e6c5a7",
+    "height": 205,
+    "tags": [
+      "currently-reading"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8709464261?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "209234015",
+    "title": "Build a Large Language Model (From Scratch)",
+    "author": "Sebastian Raschka",
+    "color": "#b4834e",
+    "accent": "#f5dfb5",
+    "height": 211,
+    "tags": [
+      "currently-reading"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8611190152?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "10255232",
+    "title": "Fundamentals of Digital Logic with Verilog Design",
+    "author": "Stephen D. Brown",
+    "color": "#405f48",
+    "accent": "#dbc88c",
+    "height": 186,
+    "tags": [
+      "currently-reading"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8592105665?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "171122",
+    "title": "دیباچه‌‌ای بر جامعه‌شناسی سیاسی ایران:  دوره جمهوری اسلامی",
+    "author": "حسین بشیریه",
+    "color": "#71875c",
+    "accent": "#e8d5a2",
+    "height": 196,
+    "tags": [
+      "currently-reading"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8580807339?utm_medium=api&utm_source=rss",
+    "lang": "fa"
+  },
+  {
+    "id": "50040746",
+    "title": "Mathematics for Machine Learning",
+    "author": "Marc Peter Deisenroth",
+    "color": "#405f48",
+    "accent": "#dbc88c",
+    "height": 208,
+    "tags": [
+      "currently-reading"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8567262802?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "68428",
+    "title": "Mistborn: The Final Empire (Mistborn, #1)",
+    "author": "Brandon Sanderson",
+    "color": "#c17a48",
+    "accent": "#f5e3b9",
+    "height": 179,
+    "tags": [
+      "currently-reading"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7714194136?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "11084145",
+    "title": "Steve Jobs",
+    "author": "Walter Isaacson",
+    "color": "#b4834e",
+    "accent": "#f5dfb5",
+    "height": 167,
+    "tags": [
+      "currently-reading"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7069856960?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "245544838",
+    "title": "Build a Reasoning Model (From Scratch)",
+    "author": "Sebastian Raschka",
+    "color": "#617c9e",
+    "accent": "#d6e1ed",
+    "height": 170,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8968491973?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "6149",
+    "title": "Beloved",
+    "author": "Toni Morrison",
+    "color": "#6e5267",
+    "accent": "#e6c5a7",
+    "height": 194,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8894902371?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "41637836",
+    "title": "The Subtle Knife (His Dark Materials, #2)",
+    "author": "Philip Pullman",
+    "color": "#c17a48",
+    "accent": "#f5e3b9",
+    "height": 167,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8746098169?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "18122",
+    "title": "The Amber Spyglass (His Dark Materials, #3)",
+    "author": "Philip Pullman",
+    "color": "#daae4e",
+    "accent": "#fff2cf",
+    "height": 174,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8746097857?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "48635408",
+    "title": "Men Who Hate Women: The Extremism Nobody is Talking About",
+    "author": "Laura Bates",
+    "color": "#daae4e",
+    "accent": "#fff2cf",
+    "height": 167,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8689212499?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "2839",
+    "title": "Bridge to Terabithia",
+    "author": "Katherine Paterson",
+    "color": "#4c777c",
+    "accent": "#e7bb70",
+    "height": 166,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8660670212?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "54493401",
+    "title": "Project Hail Mary",
+    "author": "Andy Weir",
+    "color": "#568292",
+    "accent": "#f0d18e",
+    "height": 211,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/8592104869?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "11324722",
+    "title": "The Righteous Mind: Why Good People Are Divided by Politics and Religion",
+    "author": "Jonathan Haidt",
+    "color": "#d67c57",
+    "accent": "#f4c77d",
+    "height": 197,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7818169319?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "61771675",
+    "title": "Hello Beautiful",
+    "author": "Ann Napolitano",
+    "color": "#bc675c",
+    "accent": "#f0d4ad",
+    "height": 177,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7720240825?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "15839976",
+    "title": "Red Rising (Red Rising Saga, #1)",
+    "author": "Pierce Brown",
+    "color": "#776397",
+    "accent": "#e5b778",
+    "height": 186,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7719855558?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "77566",
+    "title": "Hyperion (Hyperion Cantos, #1)",
+    "author": "Dan Simmons",
+    "color": "#71875c",
+    "accent": "#e8d5a2",
+    "height": 165,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7718133440?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "456183",
+    "title": "Playing for Real: A Text on Game Theory",
+    "author": "Ken Binmore",
+    "color": "#776397",
+    "accent": "#e5b778",
+    "height": 182,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7696628714?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "15930573",
+    "title": "Game Theory: An Introduction",
+    "author": "Steven Tadelis",
+    "color": "#405f48",
+    "accent": "#dbc88c",
+    "height": 185,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7696627400?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "49176",
+    "title": "Games People Play",
+    "author": "Eric Berne",
+    "color": "#55866c",
+    "accent": "#e6c865",
+    "height": 185,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7696610732?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "17801996",
+    "title": "Conversational Intelligence: How Great Leaders Build Trust and Get Extraordinary Results",
+    "author": "Judith E. Glaser",
+    "color": "#daae4e",
+    "accent": "#fff2cf",
+    "height": 202,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7696610553?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "3828902",
+    "title": "Thinking In Systems: A Primer",
+    "author": "Donella H. Meadows",
+    "color": "#405f48",
+    "accent": "#dbc88c",
+    "height": 169,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/7696610358?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "53531485",
+    "title": "Chol English-Tamil Dictionary",
+    "author": "Karky Research Inflection",
+    "color": "#c17a48",
+    "accent": "#f5e3b9",
+    "height": 168,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/4214385676?utm_medium=api&utm_source=rss"
+  },
+  {
+    "id": "4005337",
+    "title": "حباب شیشه",
+    "author": "Sylvia Plath",
+    "color": "#bc675c",
+    "accent": "#f0d4ad",
+    "height": 172,
+    "tags": [
+      "to-read"
+    ],
+    "goodreadsUrl": "https://www.goodreads.com/review/show/3906240073?utm_medium=api&utm_source=rss",
     "lang": "fa"
   }
 ]

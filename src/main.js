@@ -7,6 +7,38 @@ async function loadBooks() {
   return books
 }
 
+function selectDailyBooks(allBooks) {
+  const today = new Date()
+  let seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate()
+  const random = () => {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0
+    return seed / 4294967296
+  }
+  const shuffle = (items) => {
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(random() * (i + 1))
+      const swapped = items[i]
+      items[i] = items[j]
+      items[j] = swapped
+    }
+  }
+
+  const remaining = [...allBooks]
+  const selected = []
+  for (const tag of ['read', 'currently-reading', 'to-read']) {
+    const matching = remaining.filter((book) => book.tags?.includes(tag))
+    if (!matching.length) continue
+    const book = matching[Math.floor(random() * matching.length)]
+    selected.push(book)
+    remaining.splice(remaining.indexOf(book), 1)
+  }
+
+  shuffle(remaining)
+  selected.push(...remaining.slice(0, Math.max(0, 27 - selected.length)))
+  shuffle(selected)
+  return selected
+}
+
 function span(className, text = '') {
   const element = document.createElement('span')
   element.className = className
@@ -20,7 +52,7 @@ if (!root) throw new Error('Application mount target not found')
 
 let books
 try {
-  books = await loadBooks()
+  books = selectDailyBooks(await loadBooks())
 } catch (error) {
   root.textContent = 'Could not load the book list. Please reload the page.'
   throw error
@@ -55,8 +87,11 @@ function createPlant() {
   return plant
 }
 
+const tagLabels = { read: 'Read', 'currently-reading': 'Currently reading', 'to-read': 'Want to read' }
+
 books.forEach((book, index) => {
   const spine = document.createElement('div')
+  const tags = (book.tags || []).map((tag) => tagLabels[tag] || tag).join(', ')
   const classes = ['book']
   if (index % 6 === 0) classes.push('vintage-bands')
   else if (index % 7 === 2) classes.push('vintage-frame')
@@ -66,7 +101,10 @@ books.forEach((book, index) => {
   if (index === 5) classes.push('plant-neighbor')
   if (book.lang === 'fa') classes.push('farsi-book')
   spine.className = classes.join(' ')
-  spine.setAttribute('aria-label', book.lang === 'fa' ? `${book.title}، اثر ${book.author}` : `${book.title} by ${book.author}`)
+  const bookLabel = book.lang === 'fa' ? `${book.title}، اثر ${book.author}` : `${book.title} by ${book.author}`
+  spine.setAttribute('aria-label', tags ? `${bookLabel}. ${tags}` : bookLabel)
+  spine.title = tags ? `${bookLabel} · ${tags}` : bookLabel
+  spine.dataset.tags = (book.tags || []).join(' ')
   if (book.lang === 'fa') {
     spine.lang = 'fa'
     spine.dir = 'rtl'
