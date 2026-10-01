@@ -113,6 +113,7 @@ function populateCycle(bookList, cycle, withPlant) {
     if (book.title !== 'A Philosophy of Software Design' && index % 10 === 7) classes.push('lean-left')
     if (withPlant && index === 5) classes.push('plant-neighbor')
     if (displayTitle.length > 18) classes.push('wide-title')
+    if (displayTitle.length <= 14) classes.push('short-title')
     if (hasThreeWords) classes.push('three-word-title')
     if (book.lang === 'fa') classes.push('farsi-book')
     spine.className = classes.join(' ')
@@ -190,6 +191,16 @@ function setupLoop(row, bookCycle) {
   let drag = null
   let cycleWidth = 0
   let sideCopies = 0
+
+  function centerShortTitles() {
+    row.querySelectorAll('.book.short-title').forEach((book) => {
+      const title = book.querySelector('.book-title')
+      const rule = book.querySelector('.book-rule')
+      const currentCenter = title.offsetTop + title.offsetHeight / 2
+      title.style.translate = `0 ${Math.round(rule.offsetTop / 2 - currentCenter)}px`
+    })
+  }
+
   const shadowObserver = new ResizeObserver((entries) => {
     for (const entry of entries) {
       const height = entry.target.offsetHeight
@@ -237,9 +248,11 @@ function setupLoop(row, bookCycle) {
     sideCopies = nextSideCopies
     row.scrollLeft = (sideCopies + relativePosition) * cycleWidth
     centerLoop()
+    centerShortTitles()
   }
 
   layoutLoop()
+  document.fonts.ready.then(centerShortTitles)
   window.addEventListener('resize', layoutLoop)
   row.addEventListener('scroll', centerLoop, { passive: true })
 
