@@ -29,7 +29,7 @@
 .book.wide-title{flex-basis:clamp(46px,6vw,72px);min-height:var(--height)}
 .book.wide-title .book-title{max-width:100%}
 .books-row{padding-bottom:12px;margin-bottom:-12px}
-.wood-shelf + .books-row{margin-top:32px}
+.wood-shelf + .books-row{margin-top:32px;box-shadow:0 -32px 0 #e5dfd4}
 .book{--shadow-offset:8px;--shadow-blur:16px;--hover-shadow-blur:40px;--hover-shadow-spread:-6px;border-top:1px solid;border-image:linear-gradient(90deg,#45392f 0%,#d9c9ae 24%,#f5e8cf 55%,#bbac94 78%,#45392f 100%) 1;box-shadow:0 var(--shadow-offset) var(--shadow-blur) rgba(0,0,0,.32),inset -.35rem 0 .5rem rgba(0,0,0,.38),inset .35rem 0 .5rem rgba(0,0,0,.34),inset 0 1px 0 #fff5;transition:transform .25s ease,box-shadow .25s ease;}
 .book:hover{z-index:2;transform:translateY(-8px);box-shadow:0 var(--shadow-offset) var(--hover-shadow-blur) var(--hover-shadow-spread) rgba(0,0,0,.48),inset -.35rem 0 .5rem rgba(0,0,0,.38),inset .35rem 0 .5rem rgba(0,0,0,.34),inset 0 1px 0 #fff5}
 .wood-shelf{z-index:1;position:relative}
@@ -56,7 +56,8 @@
 .book.three-word-title .book-title,.book.three-word-title .book-author{flex-shrink:0;max-height:none}
 .book:hover{transform:translateY(-8px) rotate(var(--lean))}
 /* A small glass jar with a butterfly on the lower shelf. */
-.shelf-jar{position:relative;flex:0 0 96px;height:142px;margin-inline:8px;align-self:flex-end;pointer-events:none;filter:drop-shadow(3px 5px 3px #47372744)}
+.shelf-jar{position:relative;flex:0 0 96px;height:142px;margin-inline:8px;align-self:flex-end;cursor:pointer;filter:drop-shadow(3px 5px 3px #47372744)}
+.shelf-jar:focus-visible{outline:2px solid #a97847;outline-offset:4px}
 .jar-lid{position:absolute;z-index:4;top:0;left:14px;width:68px;height:15px;border-radius:4px 4px 3px 3px;background:linear-gradient(90deg,#79543c,#a97852 45%,#79533b);box-shadow:inset 0 2px #c6996d99,0 2px 2px #54382f44}
 .jar-neck{position:absolute;z-index:2;top:11px;left:20px;width:56px;height:15px;border:2px solid #c7b8a4;border-radius:3px;background:#ddd2bd88}
 .jar-glass{position:absolute;bottom:0;left:6px;width:84px;height:121px;overflow:hidden;border:2px solid #ffffffa8;border-left-color:#c9d4cc;border-right-color:#9ca9a0;border-bottom-color:#849a91;border-radius:12px 12px 19px 19px;background:linear-gradient(90deg,#d4e2db77 0 12%,#f8f7eb55 28% 65%,#adc2b78c 100%);box-shadow:inset 5px 0 7px #ffffff99,inset -7px 0 10px #5d796a44,inset 0 -6px 5px #79928166,0 2px 2px #57473533}

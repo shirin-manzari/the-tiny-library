@@ -97,10 +97,11 @@ function createPlant() {
 }
 
 function createJar() {
-  const jar = document.createElement('div')
+  const jar = document.createElement('a')
   jar.className = 'shelf-jar'
-  jar.setAttribute('role', 'img')
-  jar.setAttribute('aria-label', 'Glass jar with a blue butterfly')
+  jar.href = 'https://shirin-manzari.github.io/'
+  jar.setAttribute('aria-label', "Visit Shirin Manzari's website")
+  jar.title = "Visit Shirin Manzari's website"
   jar.append(span('jar-lid'), span('jar-neck'))
 
   const glass = span('jar-glass')
@@ -218,7 +219,7 @@ if (remainingBooks.length) {
 
 root.replaceChildren(shelf)
 
-function setupLoop(row, bookCycle) {
+function setupLoop(row, bookCycle, alignJarOnLoad = false) {
   let drag = null
   let cycleWidth = 0
   let sideCopies = 0
@@ -283,6 +284,14 @@ function setupLoop(row, bookCycle) {
   }
 
   layoutLoop()
+  if (alignJarOnLoad) {
+    const jar = bookCycle.querySelector('.shelf-jar')
+    if (jar) {
+      const rowRight = row.getBoundingClientRect().right - parseFloat(getComputedStyle(row).paddingRight)
+      row.scrollLeft += jar.getBoundingClientRect().right - rowRight
+      centerLoop()
+    }
+  }
   document.fonts.ready.then(centerShortTitles)
   window.addEventListener('resize', layoutLoop)
   row.addEventListener('scroll', centerLoop, { passive: true })
@@ -295,7 +304,7 @@ function setupLoop(row, bookCycle) {
   }
 
   row.addEventListener('pointerdown', (event) => {
-    if (event.pointerType === 'touch' || event.button !== 0 || row.scrollWidth <= row.clientWidth) return
+    if (event.pointerType === 'touch' || event.button !== 0 || row.scrollWidth <= row.clientWidth || event.target.closest('a')) return
     stopKeyAnimation()
     drag = { pointerId: event.pointerId, x: event.clientX, scrollLeft: row.scrollLeft }
     row.setPointerCapture(event.pointerId)
@@ -352,7 +361,7 @@ function setupLoop(row, bookCycle) {
 }
 
 const shelfControllers = [setupLoop(row, bookCycle)]
-if (secondRow) shelfControllers.push(setupLoop(secondRow, secondCycle))
+if (secondRow) shelfControllers.push(setupLoop(secondRow, secondCycle, true))
 
 window.addEventListener('keydown', (event) => {
   if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return
