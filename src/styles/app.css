@@ -66,8 +66,8 @@
 .jar-butterfly-scene .wing{background:#888;display:block;opacity:.7;outline:1px solid transparent;position:absolute;top:0}
 .jar-butterfly-scene .wing:first-child{animation:jar-leftflap 250ms cubic-bezier(.48,.01,.54,1) infinite alternate;height:1px;left:0;transform:rotateY(-20deg);transform-origin:700% 50%;width:1px;z-index:3}
 .jar-butterfly-scene .wing:last-child{animation:jar-rightflap 250ms cubic-bezier(.48,.01,.54,1) infinite alternate;right:0;transform:rotateY(200deg);z-index:1}
-.jar-butterfly-scene .bit{background:dodgerblue;box-shadow:6px 8px 8px #173b6580,inset -8px -6px 9px #125da766}
-.jar-butterfly-scene .bit:after{background:hsl(209.6deg 100% 65.88%);box-shadow:inset -4px -3px 6px #0d67ba66;content:"";display:inline-block}
+.jar-butterfly-scene .bit{background:linear-gradient(110deg,#102d53 8%,#1688ee 46%,#05080f 90%);box-shadow:6px 8px 8px #03060caa,inset -8px -6px 10px #02050bcc,inset 0 0 0 4px #03060c}
+.jar-butterfly-scene .bit:after{background:transparent;content:"";display:inline-block}
 .jar-butterfly-scene .bit,.jar-butterfly-scene .bit:after{border-radius:50%;overflow:hidden;position:absolute;right:0;top:0;transform-origin:100% 50%}
 .jar-butterfly-scene .bit:first-child{height:70px;text-align:center;top:15px;transform:rotateZ(40deg);width:130px}
 .jar-butterfly-scene .bit:first-child:after{height:60px;left:-30px;top:5px;width:100px}
