@@ -123,6 +123,7 @@ function createJar() {
 }
 
 const tagLabels = { read: 'Read', 'currently-reading': 'Currently reading', 'to-read': 'Want to read' }
+const leanAngles = [3.5, 4.1, 4.7, 3.3, 2.9, 4.5, 1.5]
 
 function populateCycle(bookList, cycle, withPlant, withJar = false) {
   bookList.forEach((book, index) => {
@@ -156,7 +157,15 @@ function populateCycle(bookList, cycle, withPlant, withJar = false) {
     spine.style.setProperty('--book', book.color)
     spine.style.setProperty('--accent', book.accent)
     const minimumHeight = displayTitle.length > 38 ? 238 : displayTitle.length > 18 ? 230 : 200
-    spine.style.setProperty('--height', `${Math.max(book.height, minimumHeight)}px`)
+    const height = Math.max(book.height, minimumHeight)
+    spine.style.setProperty('--height', `${height}px`)
+    if (classes.includes('lean-right') || classes.includes('lean-left')) {
+      const direction = classes.includes('lean-right') ? 1 : -1
+      const angleIndex = (Math.floor(index / 10) + (direction < 0 ? 3 : 0)) % leanAngles.length
+      const angle = leanAngles[angleIndex]
+      spine.style.setProperty('--lean', `${direction * angle}deg`)
+      spine.style.setProperty('--lean-gap', `${Math.ceil(height * Math.sin(angle * Math.PI / 180)) + 2}px`)
+    }
 
     const ornament = span('book-ornament')
     ornament.setAttribute('aria-hidden', 'true')

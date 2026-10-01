@@ -31,7 +31,7 @@
 .books-row{padding-bottom:12px;margin-bottom:-12px}
 .wood-shelf + .books-row{margin-top:32px}
 .book{--shadow-offset:8px;--shadow-blur:16px;--hover-shadow-blur:40px;--hover-shadow-spread:-6px;border-top:1px solid;border-image:linear-gradient(90deg,#45392f 0%,#d9c9ae 24%,#f5e8cf 55%,#bbac94 78%,#45392f 100%) 1;box-shadow:0 var(--shadow-offset) var(--shadow-blur) rgba(0,0,0,.32),inset -.35rem 0 .5rem rgba(0,0,0,.38),inset .35rem 0 .5rem rgba(0,0,0,.34),inset 0 1px 0 #fff5;transition:transform .25s ease,box-shadow .25s ease;}
-.book:hover{z-index:2;transform:translateY(-8px) scale(1.02);box-shadow:0 var(--shadow-offset) var(--hover-shadow-blur) var(--hover-shadow-spread) rgba(0,0,0,.48),inset -.35rem 0 .5rem rgba(0,0,0,.38),inset .35rem 0 .5rem rgba(0,0,0,.34),inset 0 1px 0 #fff5}
+.book:hover{z-index:2;transform:translateY(-8px);box-shadow:0 var(--shadow-offset) var(--hover-shadow-blur) var(--hover-shadow-spread) rgba(0,0,0,.48),inset -.35rem 0 .5rem rgba(0,0,0,.38),inset .35rem 0 .5rem rgba(0,0,0,.34),inset 0 1px 0 #fff5}
 .wood-shelf{z-index:1;position:relative}
 .project-preview{width:min(1150px,calc(100% - 64px));margin:0 auto 48px}
 .project-preview img{display:block;width:100%;height:auto;box-shadow:0 .5rem 2rem rgba(0,0,0,.18)}
@@ -52,12 +52,12 @@
 .vintage-crest .book-ornament{background:linear-gradient(to bottom,transparent 0 9px,var(--accent) 9px 11px,transparent 11px 16px,var(--accent) 16px 18px,transparent 18px calc(100% - 18px),var(--accent) calc(100% - 18px) calc(100% - 16px),transparent calc(100% - 16px) calc(100% - 11px),var(--accent) calc(100% - 11px) calc(100% - 9px),transparent calc(100% - 9px))}
 .vintage-crest .book-ornament:before{content:"";position:absolute;left:50%;bottom:24px;width:6px;height:6px;border:1px solid var(--accent);background:radial-gradient(circle at center,var(--accent) 0 1px,transparent 1px);transform:translateX(-50%) rotate(45deg)}
 .book{--lean:0deg;transform-origin:50% 100%;transform:rotate(var(--lean))}
-.book.lean-right{--lean:5.5deg;margin-right:24px;z-index:1}
-.book.lean-left{--lean:-6.5deg;margin-left:27px;z-index:1}
+.book.lean-right{margin-right:var(--lean-gap);z-index:1}
+.book.lean-left{margin-left:var(--lean-gap);z-index:1}
 .book.plant-neighbor{--lean:4deg;height:calc(var(--height) - 18px);margin-right:-11px;z-index:1}
 .book.three-word-title{height:auto;min-height:var(--height)}
 .book.three-word-title .book-title,.book.three-word-title .book-author{flex-shrink:0;max-height:none}
-.book:hover{transform:translateY(-8px) rotate(var(--lean)) scale(1.02)}
+.book:hover{transform:translateY(-8px) rotate(var(--lean))}
 /* A small glass jar with a butterfly on the lower shelf. */
 .shelf-jar{position:relative;flex:0 0 96px;height:142px;margin-inline:8px;align-self:flex-end;pointer-events:none;filter:drop-shadow(3px 5px 3px #47372744)}
 .jar-lid{position:absolute;z-index:4;top:0;left:14px;width:68px;height:15px;border:1px solid #715037;border-radius:5px 5px 2px 2px;background:linear-gradient(#b88c5b 0 22%,#866143 23% 40%,#b68a59 41% 67%,#75543d 68%);box-shadow:inset 0 2px #e6c39477,0 2px 2px #3d302133}
