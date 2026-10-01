@@ -106,6 +106,7 @@ books.forEach((book, index) => {
   if (book.title !== 'A Philosophy of Software Design' && index % 10 === 3) classes.push('lean-right')
   if (book.title !== 'A Philosophy of Software Design' && index % 10 === 7) classes.push('lean-left')
   if (index === 5) classes.push('plant-neighbor')
+  if (displayTitle.length > 20) classes.push('wide-title')
   if (book.lang === 'fa') classes.push('farsi-book')
   spine.className = classes.join(' ')
   const bookLabel = book.lang === 'fa' ? `${book.title}، اثر ${book.author}` : `${book.title} by ${book.author}`
