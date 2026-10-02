@@ -119,10 +119,10 @@ function createJar() {
 }
 
 function createBook(book, index, withPlant) {
-  const reviewUrl =
-    typeof book.reviewUrl === "string" ? book.reviewUrl.trim() : "";
-  const spine = document.createElement(reviewUrl ? "a" : "div");
-  if (reviewUrl) spine.href = reviewUrl;
+  const spine = document.createElement("button");
+  spine.type = "button";
+  spine.dataset.bookId = book.id;
+  spine.setAttribute("aria-haspopup", "dialog");
   const tags = (book.tags || []).map((tag) => TAG_LABELS[tag] || tag).join(", ");
   const displayTitle = normalizeBookTitle(book.title);
   const titleLength = displayTitle.length;
@@ -237,8 +237,135 @@ const shelfRows = [
 
 root.replaceChildren(shelf);
 
+const booksById = new Map(
+  [...firstShelfBooks, ...secondShelfBooks].map((book) => [String(book.id), book]),
+);
+const bookDialog = document.createElement("dialog");
+bookDialog.className = "book-dialog";
+bookDialog.setAttribute("aria-labelledby", "preview-title");
+bookDialog.setAttribute("aria-describedby", "preview-author");
+document.body.append(bookDialog);
+
+let previewSource = null;
+let closingPreview = false;
+
+function closeBookPreview() {
+  if (!bookDialog.open || closingPreview) return;
+  closingPreview = true;
+  let finished = false;
+  const finish = () => {
+    if (finished) return;
+    finished = true;
+    bookDialog.close();
+    closingPreview = false;
+    const focusTarget = previewSource?.closest("[aria-hidden='true']")
+      ? previewSource.closest(".books-row") : previewSource;
+    focusTarget?.focus({ preventScroll: true });
+  };
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    finish();
+    return;
+  }
+  bookDialog.animate(
+    [{ opacity: 1, transform: "scale(1)" }, { opacity: 0, transform: "scale(.96)" }],
+    { duration: 160, easing: "ease-in", fill: "forwards" },
+  ).finished.then(finish, finish);
+  // Keep closing responsive even when the browser pauses animation frames.
+  window.setTimeout(finish, 180);
+}
+
+function openBookPreview(book, source) {
+  if (bookDialog.open) return;
+  previewSource = source;
+  bookDialog.getAnimations().forEach((animation) => animation.cancel());
+  bookDialog.style.setProperty("--book", book.color);
+  bookDialog.style.setProperty("--accent", book.accent);
+
+  const close = document.createElement("button");
+  close.type = "button";
+  close.className = "preview-close";
+  close.setAttribute("aria-label", "Close book preview");
+  close.textContent = "×";
+  close.autofocus = true;
+  close.addEventListener("click", closeBookPreview);
+
+  const cover = document.createElement("div");
+  cover.className = "preview-cover";
+  cover.lang = book.lang === "fa" ? "fa" : "en";
+  cover.dir = book.lang === "fa" ? "rtl" : "ltr";
+  const title = document.createElement("h2");
+  title.id = "preview-title";
+  title.textContent = book.title;
+  const author = document.createElement("p");
+  author.id = "preview-author";
+  author.textContent = book.author;
+  author.dir = "auto";
+  cover.append(title, span("preview-rule"), author);
+
+  const stage = document.createElement("div");
+  stage.className = "preview-stage";
+  const volume = document.createElement("div");
+  volume.className = "preview-volume";
+  for (const face of ["back", "pages-side", "pages-top", "pages-bottom", "pages-front"]) {
+    const surface = span(`preview-${face}`);
+    surface.setAttribute("aria-hidden", "true");
+    volume.append(surface);
+  }
+  volume.append(cover);
+  stage.append(volume);
+
+  const details = document.createElement("div");
+  details.className = "preview-details";
+  const tags = document.createElement("div");
+  tags.className = "preview-tags";
+  for (const tag of book.tags || []) {
+    const chip = span("preview-tag", TAG_LABELS[tag] || tag);
+    chip.dir = "auto";
+    tags.append(chip);
+  }
+  const links = document.createElement("div");
+  links.className = "preview-links";
+  for (const [label, url] of [["View on Goodreads", book.goodreadsUrl], ["Read my review", book.reviewUrl]]) {
+    if (typeof url !== "string" || !url.trim()) continue;
+    const link = document.createElement("a");
+    link.textContent = label;
+    link.href = url.trim();
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    links.append(link);
+  }
+  details.append(tags, links);
+  bookDialog.replaceChildren(close, stage, details);
+  shelfControllers.forEach((controller) => controller.stopMotion());
+  bookDialog.showModal();
+
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const from = source.getBoundingClientRect();
+    const to = volume.getBoundingClientRect();
+    const x = from.left + from.width / 2 - (to.left + to.width / 2);
+    const y = from.top + from.height / 2 - (to.top + to.height / 2);
+    volume.animate([
+      { transform: `translate(${x}px, ${y}px) scale(${from.width / to.width}, ${from.height / to.height}) rotateY(-65deg)`, opacity: .5 },
+      { transform: getComputedStyle(volume).transform, opacity: 1 },
+    ], { duration: 520, easing: "cubic-bezier(.2,.75,.25,1)" });
+    details.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 350, delay: 220, fill: "backwards" });
+  }
+}
+
+bookDialog.addEventListener("cancel", (event) => {
+  event.preventDefault();
+  closeBookPreview();
+});
+bookDialog.addEventListener("click", (event) => {
+  if (event.target !== bookDialog) return;
+  const bounds = bookDialog.getBoundingClientRect();
+  if (event.clientX < bounds.left || event.clientX > bounds.right ||
+      event.clientY < bounds.top || event.clientY > bounds.bottom) closeBookPreview();
+});
 function setupLoop(row, bookCycle, alignJarOnLoad) {
   let drag = null;
+  let gestureStart = null;
+  let gestureMoved = false;
   let cycleWidth = 0;
   let sideCopies = 0;
   let shortTitleElements = [];
@@ -265,6 +392,7 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
   function cloneCycle() {
     const clone = bookCycle.cloneNode(true);
     clone.setAttribute("aria-hidden", "true");
+    clone.querySelectorAll("button, a").forEach((element) => { element.tabIndex = -1; });
     return clone;
   }
 
@@ -335,6 +463,8 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
   }
 
   row.addEventListener("pointerdown", (event) => {
+    gestureStart = { x: event.clientX, y: event.clientY };
+    gestureMoved = false;
     if (
       event.pointerType === "touch" ||
       event.button !== 0 ||
@@ -348,17 +478,22 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
       x: event.clientX,
       scrollLeft: row.scrollLeft,
     };
-    row.setPointerCapture(event.pointerId);
-    row.classList.add("is-dragging");
   });
 
   row.addEventListener("pointermove", (event) => {
+    if (gestureStart && Math.hypot(event.clientX - gestureStart.x, event.clientY - gestureStart.y) > 6) {
+      gestureMoved = true;
+    }
     if (!drag || event.pointerId !== drag.pointerId) return;
+    if (!gestureMoved) return;
+    row.setPointerCapture(event.pointerId);
+    row.classList.add("is-dragging");
     row.scrollLeft = drag.scrollLeft - (event.clientX - drag.x);
     centerLoop();
   });
 
   function endDrag(event) {
+    gestureStart = null;
     if (!drag || event.pointerId !== drag.pointerId) return;
     if (row.hasPointerCapture(event.pointerId))
       row.releasePointerCapture(event.pointerId);
@@ -368,6 +503,17 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
 
   row.addEventListener("pointerup", endDrag);
   row.addEventListener("pointercancel", endDrag);
+  row.addEventListener("lostpointercapture", endDrag);
+  row.addEventListener("click", (event) => {
+    if (gestureMoved && event.detail !== 0) {
+      event.preventDefault();
+      return;
+    }
+    const source = event.target.closest(".book[data-book-id]");
+    if (!source) return;
+    const book = booksById.get(source.dataset.bookId);
+    if (book) openBookPreview(book, source);
+  });
 
   row.addEventListener(
     "wheel",
@@ -408,7 +554,7 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
     keyAnimation = requestAnimationFrame(frame);
   }
 
-  return { row, moveShelf };
+  return { row, moveShelf, stopMotion: stopKeyAnimation };
 }
 
 const shelfControllers = shelfRows.map(({ row, bookCycle, alignJarOnLoad }) =>
@@ -416,6 +562,7 @@ const shelfControllers = shelfRows.map(({ row, bookCycle, alignJarOnLoad }) =>
 );
 
 window.addEventListener("keydown", (event) => {
+  if (bookDialog.open) return;
   if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
   if (event.altKey || event.ctrlKey || event.metaKey) return;
   const target = event.target instanceof Element ? event.target : null;

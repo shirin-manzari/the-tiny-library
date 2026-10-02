@@ -22,7 +22,9 @@ python3 scripts/import_goodreads.py
 
 Shelves use book tags:
 
-- **read**: `read` or `did-not-finished`.
-- **in progress**: `currently-reading` or “Want to read” (`to-read`, `want-to-read`, or `want to read`).
+- **read**: `read` and `did-not-finished`.
+- **in progress**: `currently-reading` and `to-read`
 
 Drag, scroll, or use the arrow keys to browse.
+
+Click a book for an animated preview with its title, author, tags, and links. Close it with ×, Escape, or a click outside.
