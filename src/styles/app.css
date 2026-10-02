@@ -42,7 +42,9 @@ body {
   background: linear-gradient(180deg, #e5dfd4, #f1ece3 85%, #e1d8cb);
   overflow-x: auto;
   scrollbar-width: none;
-  touch-action: pan-x;
+  touch-action: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
   user-select: none;
   cursor: grab;
   margin-bottom: -12px;
@@ -562,10 +564,12 @@ body:has(.book-dialog[open]) {
   box-shadow: 0 -32px 0 #e5dfd4;
 }
 
-.book:hover {
-  z-index: 2;
-  box-shadow: 0 var(--shadow-offset) var(--hover-shadow-blur) var(--hover-shadow-spread) rgba(0, 0, 0, .48), var(--binding-shadow);
-  transform: translateY(-8px) rotate(var(--lean));
+@media (hover: hover) {
+  .book:hover {
+    z-index: 2;
+    box-shadow: 0 var(--shadow-offset) var(--hover-shadow-blur) var(--hover-shadow-spread) rgba(0, 0, 0, .48), var(--binding-shadow);
+    transform: translateY(-8px) rotate(var(--lean));
+  }
 }
 
 /* Book ornaments */

@@ -376,6 +376,9 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
   let drag = null;
   let gestureStart = null;
   let gestureMoved = false;
+  let touchActive = false;
+  let touchSettling = false;
+  let touchSettleTimer = null;
   let cycleWidth = 0;
   let sideCopies = 0;
   let shortTitleElements = [];
@@ -414,6 +417,14 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
     const shift = -Math.round(offset / cycleWidth) * cycleWidth;
     row.scrollLeft += shift;
     if (drag) drag.scrollLeft += shift;
+  }
+
+  function settleTouchScroll() {
+    window.clearTimeout(touchSettleTimer);
+    touchSettleTimer = window.setTimeout(() => {
+      touchSettling = false;
+      centerLoop();
+    }, 180);
   }
 
   function layoutLoop() {
@@ -463,7 +474,11 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
   }
   document.fonts.ready.then(centerShortTitles);
   window.addEventListener("resize", layoutLoop);
-  row.addEventListener("scroll", centerLoop, { passive: true });
+  row.addEventListener("scroll", () => {
+    if (touchActive) return;
+    if (touchSettling) settleTouchScroll();
+    else centerLoop();
+  }, { passive: true });
 
   let keyAnimation = null;
 
@@ -475,6 +490,11 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
   row.addEventListener("pointerdown", (event) => {
     gestureStart = { x: event.clientX, y: event.clientY };
     gestureMoved = false;
+    if (event.pointerType === "touch") {
+      window.clearTimeout(touchSettleTimer);
+      touchActive = true;
+      touchSettling = true;
+    }
     if (
       event.pointerType === "touch" ||
       event.button !== 0 ||
@@ -504,6 +524,10 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
 
   function endDrag(event) {
     gestureStart = null;
+    if (event.pointerType === "touch") {
+      touchActive = false;
+      settleTouchScroll();
+    }
     if (!drag || event.pointerId !== drag.pointerId) return;
     if (row.hasPointerCapture(event.pointerId))
       row.releasePointerCapture(event.pointerId);
