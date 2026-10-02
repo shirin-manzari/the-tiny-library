@@ -300,7 +300,9 @@ function openBookPreview(book, source) {
   author.id = "preview-author";
   author.textContent = book.author;
   author.dir = "auto";
-  cover.append(title, span("preview-rule"), author);
+  const divider = span("preview-rule");
+  divider.setAttribute("aria-hidden", "true");
+  cover.append(title, divider, author);
 
   const stage = document.createElement("div");
   stage.className = "preview-stage";

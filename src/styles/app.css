@@ -311,6 +311,7 @@ body:has(.book-dialog[open]) {
 .preview-rule {
   width: 48px;
   height: 1px;
+  flex-shrink: 0;
   background: var(--accent);
   opacity: .6;
 }

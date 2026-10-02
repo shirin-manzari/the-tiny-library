@@ -28,3 +28,5 @@ Shelves use book tags:
 Drag, scroll, or use the arrow keys to browse.
 
 Click a book for an animated preview with its title, author, tags, and links. Close it with ×, Escape, or a click outside.
+
+Set a book’s `reviewUrl` in `books.json` to show a “Read my review” link in its preview.
