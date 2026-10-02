@@ -373,6 +373,7 @@ bookDialog.addEventListener("click", (event) => {
       event.clientY < bounds.top || event.clientY > bounds.bottom) closeBookPreview();
 });
 function setupLoop(row, bookCycle, alignJarOnLoad) {
+  const nativeTouchScroll = window.matchMedia("(pointer: coarse)").matches;
   let drag = null;
   let gestureStart = null;
   let gestureMoved = false;
@@ -409,8 +410,22 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
     return clone;
   }
 
+  function observeBooks() {
+    shadowObserver.disconnect();
+    shortTitleElements = [];
+    row.querySelectorAll(".book").forEach((book) => {
+      shadowObserver.observe(book);
+      if (book.classList.contains("short-title")) {
+        shortTitleElements.push({
+          title: book.querySelector(".book-title"),
+          rule: book.querySelector(".book-rule"),
+        });
+      }
+    });
+  }
+
   function centerLoop() {
-    if (!cycleWidth) return;
+    if (nativeTouchScroll || !cycleWidth) return;
     const offset = row.scrollLeft - sideCopies * cycleWidth;
     if (Math.abs(offset) <= cycleWidth / 2) return;
 
@@ -433,6 +448,12 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
       : 0;
     const nextWidth = bookCycle.getBoundingClientRect().width;
     if (!nextWidth) return;
+    if (nativeTouchScroll) {
+      if (!cycleWidth) observeBooks();
+      cycleWidth = nextWidth;
+      centerShortTitles();
+      return;
+    }
 
     const nextSideCopies = Math.max(1, Math.ceil(row.clientWidth / nextWidth));
     if (nextSideCopies !== sideCopies) {
@@ -441,17 +462,7 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
       fragment.append(bookCycle);
       for (let i = 0; i < nextSideCopies; i++) fragment.append(cloneCycle());
       row.replaceChildren(fragment);
-      shadowObserver.disconnect();
-      shortTitleElements = [];
-      row.querySelectorAll(".book").forEach((book) => {
-        shadowObserver.observe(book);
-        if (book.classList.contains("short-title")) {
-          shortTitleElements.push({
-            title: book.querySelector(".book-title"),
-            rule: book.querySelector(".book-rule"),
-          });
-        }
-      });
+      observeBooks();
     }
 
     cycleWidth = nextWidth;
@@ -475,6 +486,7 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
   document.fonts.ready.then(centerShortTitles);
   window.addEventListener("resize", layoutLoop);
   row.addEventListener("scroll", () => {
+    if (nativeTouchScroll) return;
     if (touchActive) return;
     if (touchSettling) settleTouchScroll();
     else centerLoop();
@@ -490,7 +502,7 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
   row.addEventListener("pointerdown", (event) => {
     gestureStart = { x: event.clientX, y: event.clientY };
     gestureMoved = false;
-    if (event.pointerType === "touch") {
+    if (event.pointerType === "touch" && !nativeTouchScroll) {
       window.clearTimeout(touchSettleTimer);
       touchActive = true;
       touchSettling = true;
@@ -524,7 +536,7 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
 
   function endDrag(event) {
     gestureStart = null;
-    if (event.pointerType === "touch") {
+    if (event.pointerType === "touch" && !nativeTouchScroll) {
       touchActive = false;
       settleTouchScroll();
     }
@@ -552,6 +564,7 @@ function setupLoop(row, bookCycle, alignJarOnLoad) {
   row.addEventListener(
     "wheel",
     (event) => {
+      if (nativeTouchScroll) return;
       if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
       if (!cycleWidth) return;
 
