@@ -1,19 +1,28 @@
 # The Tiny Library
 
-A small Vanilla JavaScript and CSS bookshelf displaying books from public Goodreads shelves.
+A small bookshelf for my Goodreads books, built with JavaScript and CSS.
+
+Supports Persian (fa) and English (en) books.
 
 ![The Tiny Library bookshelf demo](demo.png)
 
-To preview locally, run this from the project directory and open http://localhost:8000:
+Run locally:
 
 ```sh
 python3 -m http.server 8000
 ```
 
-To refresh `books.json` from Goodreads:
+Open http://localhost:8000.
+
+Refresh books from Goodreads:
 
 ```sh
 python3 scripts/import_goodreads.py
 ```
 
-The importer preserves existing book colors, heights, language settings, and review links. The browser selects up to 27 books for the first shelf using the current local date and puts the rest on the second shelf.
+Shelves use book tags:
+
+- **read**: `read` or `did-not-finished`.
+- **in progress**: `currently-reading` or “Want to read” (`to-read`, `want-to-read`, or `want to read`).
+
+Drag, scroll, or use the arrow keys to browse.
