@@ -460,6 +460,7 @@ body:has(.book-dialog[open]) {
 }
 
 .book-mark {
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 10px;
   line-height: 1;
   color: var(--accent);

@@ -194,7 +194,7 @@ function createBook(book, index, withPlant) {
     title,
     span("book-rule"),
     author,
-    span("book-mark", "✳"),
+    span("book-mark", "✳\uFE0E"),
   );
   return spine;
 }
