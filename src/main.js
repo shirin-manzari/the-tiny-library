@@ -1,9 +1,11 @@
-const FEATURED_BOOK_COUNT = 27;
 const DECORATION_INDEX = 5;
 const TAG_LABELS = {
   read: "Read",
+  "did-not-finished": "Did not finish",
   "currently-reading": "Currently reading",
   "to-read": "Want to read",
+  "want-to-read": "Want to read",
+  "want to read": "Want to read",
 };
 const LEAN_ANGLES = [3.5, 4.1, 4.7, 3.3, 2.9, 4.5, 1.5];
 
@@ -18,40 +20,17 @@ async function loadBooks() {
   return books;
 }
 
-function selectDailyBooks(allBooks) {
-  const today = new Date();
-  let seed =
-    today.getFullYear() * 10000 +
-    (today.getMonth() + 1) * 100 +
-    today.getDate();
-  const random = () => {
-    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
-    return seed / 4294967296;
+function groupBooksByShelf(allBooks) {
+  const matchesTags = (book, tags) =>
+    tags.some((tag) => book.tags?.includes(tag));
+  return {
+    first: allBooks.filter((book) =>
+      matchesTags(book, ["read", "did-not-finished"]),
+    ),
+    second: allBooks.filter((book) =>
+      matchesTags(book, ["currently-reading", "to-read", "want-to-read", "want to read"]),
+    ),
   };
-  const shuffle = (items) => {
-    for (let i = items.length - 1; i > 0; i--) {
-      const j = Math.floor(random() * (i + 1));
-      const swapped = items[i];
-      items[i] = items[j];
-      items[j] = swapped;
-    }
-  };
-
-  const remaining = [...allBooks];
-  const selected = [];
-  for (const tag of Object.keys(TAG_LABELS)) {
-    const matching = remaining.filter((book) => book.tags?.includes(tag));
-    if (!matching.length) continue;
-    const book = matching[Math.floor(random() * matching.length)];
-    selected.push(book);
-    remaining.splice(remaining.indexOf(book), 1);
-  }
-
-  shuffle(remaining);
-  const extraCount = Math.max(0, FEATURED_BOOK_COUNT - selected.length);
-  selected.push(...remaining.slice(0, extraCount));
-  shuffle(selected);
-  return { featured: selected, remaining: remaining.slice(extraCount) };
 }
 
 function span(className, text = "") {
@@ -75,12 +54,12 @@ const root = document.getElementById("app");
 
 if (!root) throw new Error("Application mount target not found");
 
-let featuredBooks;
-let remainingBooks;
+let firstShelfBooks;
+let secondShelfBooks;
 try {
-  const selection = selectDailyBooks(await loadBooks());
-  featuredBooks = selection.featured;
-  remainingBooks = selection.remaining;
+  const selection = groupBooksByShelf(await loadBooks());
+  firstShelfBooks = selection.first;
+  secondShelfBooks = selection.second;
 } catch (error) {
   root.textContent = "Could not load the book list. Please reload the page.";
   throw error;
@@ -91,7 +70,7 @@ shelf.className = "shelf-display";
 shelf.setAttribute("aria-label", "Books on a bookshelf");
 shelf.style.setProperty(
   "--shelf-width",
-  `${Math.min(1150, Math.max(520, featuredBooks.length * 68 + 110))}px`,
+  `${Math.min(1150, Math.max(520, Math.max(firstShelfBooks.length, secondShelfBooks.length) * 68 + 110))}px`,
 );
 
 function createPlant() {
@@ -247,10 +226,10 @@ function appendShelfRow(bookList, label, decoration) {
   return { row, bookCycle, alignJarOnLoad: decoration === "jar" };
 }
 
-const shelfRows = [appendShelfRow(featuredBooks, "Today's books", "plant")];
-if (remainingBooks.length) {
-  shelfRows.push(appendShelfRow(remainingBooks, "Remaining books", "jar"));
-}
+const shelfRows = [
+  appendShelfRow(firstShelfBooks, "Read and did not finish", "plant"),
+  appendShelfRow(secondShelfBooks, "Currently reading and want to read", "jar"),
+];
 
 root.replaceChildren(shelf);
 

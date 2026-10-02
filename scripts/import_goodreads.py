@@ -1,4 +1,4 @@
-"""Refresh books.json from the three public Goodreads shelf RSS feeds."""
+"""Refresh books.json from the public Goodreads shelf RSS feeds."""
 
 import hashlib
 import json
@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "books.json"
 FEEDS = {
     "read": "https://www.goodreads.com/review/list_rss/81224485?shelf=read",
+    "did-not-finished": "https://www.goodreads.com/review/list_rss/81224485?shelf=did-not-finished",
     "currently-reading": "https://www.goodreads.com/review/list_rss/81224485?shelf=currently-reading",
     "to-read": "https://www.goodreads.com/review/list_rss/81224485?shelf=to-read",
 }
@@ -47,12 +48,12 @@ def previous_styles():
     return styles
 
 
-def fetch_items(url):
+def fetch_items(url, allow_empty=False):
     request = Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; TinyLibrary/1.0)"})
     with urlopen(request, timeout=30) as response:
         root = ElementTree.fromstring(response.read())
     items = root.findall("./channel/item")
-    if not items:
+    if not items and not allow_empty:
         raise RuntimeError(f"No books found in {url}; books.json was not changed")
     return items
 
@@ -88,7 +89,7 @@ def main():
     books_by_id = {}
     counts = {}
     for tag, url in FEEDS.items():
-        items = fetch_items(url)
+        items = fetch_items(url, allow_empty=tag == "did-not-finished")
         counts[tag] = len(items)
         for item in items:
             book = book_from_item(item, styles)
