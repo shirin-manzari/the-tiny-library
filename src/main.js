@@ -300,7 +300,15 @@ function openBookPreview(book, source) {
   author.id = "preview-author";
   author.textContent = book.author;
   author.dir = "auto";
-  const divider = span("preview-rule");
+  const dividerPatterns = ["double", "dotted"];
+  const borderPatterns = ["double", "rounded"];
+  const patternSeed = Array.from(String(book.id || book.title)).reduce(
+    (seed, character) => seed + character.codePointAt(0), 0,
+  );
+  const divider = span(
+    `preview-rule preview-rule-${dividerPatterns[patternSeed % dividerPatterns.length]}`,
+  );
+  cover.classList.add(`preview-border-${borderPatterns[patternSeed % borderPatterns.length]}`);
   divider.setAttribute("aria-hidden", "true");
   cover.append(title, divider, author);
 

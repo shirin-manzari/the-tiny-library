@@ -292,6 +292,15 @@ body:has(.book-dialog[open]) {
   pointer-events: none;
 }
 
+.preview-border-double::before {
+  border-width: 3px;
+  border-style: double;
+}
+
+.preview-border-rounded::before {
+  border-radius: 14px;
+}
+
 .preview-cover h2 {
   margin: 0;
   font: 600 clamp(20px, 5vw, 27px)/1.35 'Playfair Display', serif;
@@ -309,11 +318,20 @@ body:has(.book-dialog[open]) {
 }
 
 .preview-rule {
-  width: 48px;
-  height: 1px;
+  position: relative;
+  width: 72px;
+  height: 10px;
   flex-shrink: 0;
-  background: var(--accent);
-  opacity: .6;
+  opacity: .75;
+}
+
+.preview-rule-double {
+  background: linear-gradient(var(--accent), var(--accent)) center 3px / 100% 1px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) center 7px / 70% 1px no-repeat;
+}
+
+.preview-rule-dotted {
+  background: radial-gradient(circle, var(--accent) 1px, transparent 1.5px) center / 8px 10px repeat-x;
 }
 
 .preview-details {
