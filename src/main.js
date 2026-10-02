@@ -199,7 +199,7 @@ function createBook(book, index, withPlant) {
   return spine;
 }
 
-function appendShelfRow(bookList, label, decoration) {
+function appendShelfRow(bookList, label, decoration, visibleTag) {
   const row = document.createElement("div");
   row.className = "books-row";
   row.tabIndex = 0;
@@ -221,14 +221,18 @@ function appendShelfRow(bookList, label, decoration) {
 
   const woodShelf = document.createElement("div");
   woodShelf.className = "wood-shelf";
-  woodShelf.append(span("wood-line"), span("wood-line second"));
+  woodShelf.append(
+    span("wood-line"),
+    span("wood-line second"),
+    span("shelf-tag", visibleTag),
+  );
   shelf.append(row, woodShelf);
   return { row, bookCycle, alignJarOnLoad: decoration === "jar" };
 }
 
 const shelfRows = [
-  appendShelfRow(firstShelfBooks, "Read and did not finish", "plant"),
-  appendShelfRow(secondShelfBooks, "Currently reading and want to read", "jar"),
+  appendShelfRow(firstShelfBooks, "Read and did not finish", "plant", "read"),
+  appendShelfRow(secondShelfBooks, "Currently reading and want to read", "jar", "in progress"),
 ];
 
 root.replaceChildren(shelf);

@@ -240,6 +240,24 @@ body {
   background: #e1b47b55;
 }
 
+.shelf-tag {
+  position: absolute;
+  top: 50%;
+  left: 24px;
+  transform: translateY(-50%);
+  padding: 4px 16px;
+  border: 1px solid #b99863;
+  border-radius: 3px;
+  background: #f3e5c9;
+  color: #60472f;
+  box-shadow: 0 2px 3px #493d3633, inset 0 1px #fff8;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
 .wood-line.second {
   left: 54%;
   width: 20%;
