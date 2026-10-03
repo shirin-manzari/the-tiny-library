@@ -4,7 +4,7 @@ A small bookshelf for my Goodreads books, built with JavaScript and CSS.
 
 Supports Persian (fa) and English (en) books.
 
-![The Tiny Library bookshelf demo](demo.png)
+![The Tiny Library bookshelf demo](preview.png)
 
 Run locally:
 
