@@ -221,6 +221,11 @@ function appendShelfRow(bookList, label, decoration, visibleTag) {
 
   const woodShelf = document.createElement("div");
   woodShelf.className = "wood-shelf";
+  for (const side of ["left", "right"]) {
+    const hanger = span(`shelf-hanger shelf-hanger-${side}`);
+    hanger.setAttribute("aria-hidden", "true");
+    woodShelf.append(hanger);
+  }
   woodShelf.append(
     span("wood-line"),
     span("wood-line second"),

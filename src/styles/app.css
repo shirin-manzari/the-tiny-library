@@ -494,6 +494,24 @@ body:has(.book-dialog[open]) {
   position: relative;
 }
 
+.shelf-hanger {
+  position: absolute;
+  top: 100%;
+  width: 16px;
+  height: 22px;
+  border-radius: 0 0 2px 2px;
+  background: inherit;
+  pointer-events: none;
+}
+
+.shelf-hanger-left {
+  left: 8%;
+}
+
+.shelf-hanger-right {
+  right: 8%;
+}
+
 .wood-line {
   position: absolute;
   top: 5px;

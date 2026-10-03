@@ -18,3 +18,6 @@ node_modules/
 dist/
 .vite/
 __pycache__/
+
+# Standalone export
+/standalone/
